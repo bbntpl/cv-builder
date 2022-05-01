@@ -1,0 +1,47 @@
+/* GLOBAL TAGS */
+
+
+.cv-form {
+	max-width: 976px;
+	width: 100%;
+	height: max-content;
+	min-height: 300px;
+	background-color: aliceblue;
+}
+
+.cv-form__inner {
+	padding: 1.5rem 2rem;
+	width: 100%;
+}
+
+.cv-form__lbl {
+	width: 100%;
+	font-size: 32px;
+	text-align: left;
+	border-bottom: 1px solid black;
+	margin: 0 0 1rem 0;
+}
+
+.cv-form__inner>fieldset {
+	margin: 2.5rem 0;
+	border: none;
+}
+
+.cv-form__c-field {
+	display: flex;
+	flex-direction: column;
+}
+
+.cv-form__c-field > label {
+	display: block;
+	text-align: left;
+	font-size: 18px;
+}
+
+.cv-form__input-collections {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 2rem;
+	justify-content: flex-start;
+	padding: .5rem 1.5rem;
+}

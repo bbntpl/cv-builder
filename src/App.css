@@ -3,15 +3,30 @@
 }
 
 .App {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	text-align: center;
 	background-color: var(--color-royal-blue);
 	min-height: 100vh;
+	width: 100%;
 }
 
-.footer>a {
-	font-size: 14px;
+/* resuable styles all over the pages */
+.primary-el-with-shadow{
+	box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+}
+
+.secondary-el-with-shadow{
+	box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+}
+
+.footer {
 	position: absolute;
 	bottom: 30px;
+}
+.footer>a {
+	font-size: 14px;
 	color: #fff;
 	text-decoration: none;
 }

@@ -1,0 +1,28 @@
+{
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
+	],
+	"parser": "@babel/eslint-parser",
+	"parserOptions": {
+		"babelOptions": {
+			"presets": [
+				"@babel/preset-react"
+			]
+		},
+		"ecmaVersion": "latest",
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"requireConfigFile": false,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"react/prop-types": "off"
+	}
+}
