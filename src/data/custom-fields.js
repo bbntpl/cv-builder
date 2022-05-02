@@ -1,77 +1,77 @@
 // the collection of values that'll be passed
 // as a property to the custom field element
-const customFieldsData = {
+const CUSTOM_FIELDS_DATA = {
 	basicInfo: [
 		{
 			lblTxt: 'Full Name',
 			lblFor: 'fname',
-			propName: 'fullName',
+			propKey: 'fullName',
 		},
 		{
 			lblTxt: 'Email Address',
 			lblFor: 'eaddress',
-			propName: 'emailAddress',
+			propKey: 'emailAddress',
 		},
 		{
 			lblTxt: 'Phone/Tel Number',
 			lblFor: 'pnumber',
-			propName: 'phoneNum',
+			propKey: 'phoneNum',
 		},
 		{
-			lblTxt: 'Address:',
+			lblTxt: 'Address',
 			lblFor: 'address',
-			propName: 'address',
+			propKey: 'address',
 		},
 		{
-			lblTxt: 'Website:',
+			lblTxt: 'Website',
 			lblFor: 'website',
-			propName: 'website',
+			propKey: 'website',
 		},
 	],
-	edu: [
+	eduHistory: [
 		{
 			lblTxt: 'Course Name',
 			lblFor: 'coursename',
-			propName: 'fullName',
+			propKey: 'fullName',
 		},
 		{
 			lblTxt: 'School Name',
 			lblFor: 'schoolname',
-			propName: 'schoolName',
+			propKey: 'schoolName',
 		},
 		{
 			lblTxt: 'Start Date',
 			lblFor: 'startdate',
-			propName: 'startDate',
+			propKey: 'startDate',
 		},
 		{
-			lblTxt: 'End Date:',
+			lblTxt: 'End Date',
 			lblFor: 'enddate',
-			propName: 'endDate',
+			propKey: 'endDate',
 		},
 	],
-	work: [
+	workExperience: [
 		{
 			lblTxt: 'Job Title',
 			lblFor: 'jobtitle',
-			propName: 'jobTitle',
+			propKey: 'jobTitle',
 		},
 		{
 			lblTxt: 'Company Name',
 			lblFor: 'companyname',
-			propName: 'companyName',
+			propKey: 'companyName',
 		},
 		{
 			lblTxt: 'Start Date',
 			lblFor: 'startdate',
-			propName: 'startDate',
+			propKey: 'startDate',
 		},
 		{
-			lblTxt: 'End Date:',
+			lblTxt: 'End Date',
 			lblFor: 'enddate',
-			propName: 'endDate',
+			propKey: 'endDate',
 		},
 	]
 };
 
-export default customFieldsData;
+export default CUSTOM_FIELDS_DATA;

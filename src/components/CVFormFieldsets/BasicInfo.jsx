@@ -1,5 +1,5 @@
 import React from 'react';
-import FieldsCollectionContainer from '../Form/FieldsCollection';
+import FieldsCollectionContainer from '../Form/FieldsCollectionContainer';
 
 export default function BasicInfo(props) {
 	const { handleChange, CVInfo } = props;
@@ -9,7 +9,7 @@ export default function BasicInfo(props) {
 				{'Basic Information'}
 			</legend>
 			<FieldsCollectionContainer
-				handleChange={handleChange}
+				updateFieldChanged={handleChange}
 				CVInfo={CVInfo}
 				fieldsetType={'basicInfo'}
 			/>

@@ -7,8 +7,15 @@ export default function CustomField(props) {
 		lblFor,
 		inputVal = '',
 		handleChange,
-		propName
+		propKey,
+		fieldsetIndex,
+		fieldsetType
 	} = props;
+	const handleChangeArgs = {
+		fieldsetType,
+		propKey,
+		fieldsetIndex
+	};
 	return (
 		<div className="cv-form__c-field">
 			<label htmlFor={lblFor}>{lblTxt}</label>
@@ -17,7 +24,7 @@ export default function CustomField(props) {
 				id={lblFor}
 				name={lblFor}
 				value={inputVal}
-				onChange={(e) => handleChange(e, propName)}
+				onChange={(e) => handleChange(e, handleChangeArgs)}
 			/>
 		</div>
 	)
