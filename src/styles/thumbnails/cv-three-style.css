@@ -1,0 +1,11 @@
+.cv3 {
+	padding: 10px;
+	text-align: left;
+	font-size: 12px;
+	line-height: .8;
+}
+.top-section {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}

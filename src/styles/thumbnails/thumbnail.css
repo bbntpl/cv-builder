@@ -1,0 +1,9 @@
+.thumbnail-main {
+	width: 200px;
+	height: 283px;
+	background-color: #fff;
+}
+
+.photo-case > img {
+	background-color: transparent;
+}

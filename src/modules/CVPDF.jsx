@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-
-class CVPDF extends Component {
-	render() {
+import React from 'react';
+import { PDFViewer } from '@react-pdf/renderer';
+export default function CVPDF() {
 		return (
-			<div>
-			</div>
+			<PDFViewer>
+				
+			</PDFViewer>
 		)
-	}
-} 
-export default CVPDF;
+}

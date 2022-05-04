@@ -1,0 +1,24 @@
+.cv-style-selection { 
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 2rem;
+	max-width: 976px;
+	width: 100%;
+	align-items: flex-start;
+	justify-content: center;
+	height: calc(100% - (85px + 115px));
+	max-height: max-content;
+}
+
+.cv-style-selection > a {
+	text-decoration: none;
+	color: #010101;
+	font-weight: 500;
+	height: min-content;
+}
+
+.cv-style-selection > a:hover {
+	outline: 4px solid gold;
+}
+

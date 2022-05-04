@@ -7,6 +7,7 @@ import './App.css';
 
 import CVForm from './modules/CVForm';
 import CVStyleSelection from './modules/CVStyleSelection';
+import CVPDF from './modules/CVPDF';
 import CustomLinkContainer from './components/CustomLinkContainer';
 import {
 	updateLocalStorage,
@@ -33,8 +34,24 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 			userData={userData}
 		/>
 	},
-	{ path: "/form", element: <CVForm /> },
-	{ path: "/styles", element: <CVStyleSelection /> },
+	{
+		path: "/form",
+		element: <CVForm
+			handleResetData={handleResetData}
+			handleFormSubmit={handleFormSubmit}
+			userData={userData}
+		/>
+	},
+	{
+		path: "/styles",
+		element: <CVStyleSelection userData={userData} />,
+		children: [
+			{
+				path: 'cv/:id',
+				element: <CVPDF userData={userData} />
+			},
+		]
+	},
 ]);
 
 function AppWrapper() {
@@ -54,10 +71,10 @@ function AppWrapper() {
 	};
 	const handleResetData = (setCVInfo) => {
 		//reset the user data to its initial state
-		setUserData({...initialUserData});
+		setUserData({ ...initialUserData });
 
 		//reset the form data to its initial state
-		setCVInfo({...initialUserData});
+		setCVInfo({ ...initialUserData });
 
 		// manually clears every single field from the following form
 		Array.from(document.querySelectorAll('input')).forEach(input => (input.value = ''));

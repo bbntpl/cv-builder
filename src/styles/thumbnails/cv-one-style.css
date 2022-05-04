@@ -1,0 +1,47 @@
+:root {
+	--color-white: invert(100%) sepia(100%) saturate(0%) hue-rotate(317deg) brightness(105%) contrast(102%);
+}
+
+.cv1 {
+	display: flex;
+	flex-direction: row;
+	font-size: 12px;
+	line-height: .8;
+}
+
+/* LEFT COLUMN STYLES - BASIC INFO, IMAGE AND SKILLS */
+.cv1 .left-col {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	width: 28%;
+}
+
+.cv1 .photo-case {
+	flex-grow: 1;
+	border: 9px solid maroon;
+}
+
+.cv1 .basic-info {
+	color: aliceblue;
+	padding: 0 10px;
+	flex-grow: 11;
+	background-color: maroon;
+}
+
+.cv1 .basic-info img {
+	width: 40px;
+	height: 2em;
+	vertical-align: bottom;
+	filter: var(--color-white);
+}
+
+.cv1 .basic-info p {
+	padding: 2px;
+}
+
+.cv1 .right-col {
+	text-align: left;
+	width: 72%;
+	padding: 1.2rem .7rem;
+}

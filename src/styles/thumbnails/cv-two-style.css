@@ -1,0 +1,31 @@
+.cv2 {
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	line-height: .8;
+	padding: 11px;
+}
+
+/* Basic Information View */
+.cv2 .basic-info{
+	display: flex;
+	align-items: center;
+	border-bottom: 3px solid black;
+	margin: 0 0 5px 0;
+}
+
+.cv2 > .basic-info {
+	gap: 5px;
+}
+
+.cv2 .main-info {
+	display: flex;
+	flex-grow: 12;
+}
+
+.cv2 > .main-info > * {
+	flex-grow: 1;
+	gap: 20px;
+	text-align: left;
+	padding: 8px;
+}

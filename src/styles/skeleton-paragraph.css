@@ -1,0 +1,9 @@
+.skeleton-paragraph {
+	display: flex;
+	flex-direction: row;
+	gap: 4px 0;
+	flex-wrap: wrap;
+	width: 100%;
+	height: max-content;
+	padding: 5px 0;
+}
