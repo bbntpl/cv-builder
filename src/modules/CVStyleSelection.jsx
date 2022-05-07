@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { 
+	useNavigate
+ } from 'react-router-dom';
 
 import '../styles/thumbnails/thumbnail.css';
 import '../styles/cv-style-selection.css';
@@ -9,6 +11,7 @@ import CVOneThumbnail from '../components/Thumbnails/CVOneThumbnail';
 import CVTwoThumbnail from '../components/Thumbnails/CVTwoThumbnail';
 import CVThreeThumbnail from '../components/Thumbnails/CVThreeThumbnail';
 
+
 const CVStyles = [
 	CVOneThumbnail,
 	CVTwoThumbnail,
@@ -16,12 +19,12 @@ const CVStyles = [
 ];
 
 export default function CVStyleSelection() {
+	const navigate = useNavigate();
 	const CVStyleLinks = CVStyles.map((Component, i) => (
-		<Link key={i} to={`cv/${i+1}`}>
+		<a key={i} onClick={() => navigate(`cv/${i+1}`)}>
 			<Component />
-		</Link>
+		</a>
 	));
-
 	return (
 		<div className='cv-style-selection'>
 			{CVStyleLinks}

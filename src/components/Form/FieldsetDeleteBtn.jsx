@@ -12,9 +12,9 @@ function FieldsetDeleteBtn(props) {
 		fieldsetType
 	} = props;
 	return (
-		<button 
-		onClick={() => deleteObjHandler({fieldsetType, fieldsetIndex})}
-		className="cv-form__rmv-fieldset">
+		<button
+			onClick={(e) => deleteObjHandler(e, { fieldsetType, fieldsetIndex })}
+			className="cv-form__rmv-fieldset">
 			<img src={DeleteIcon}></img>
 		</button>
 	)

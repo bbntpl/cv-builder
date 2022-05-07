@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import {
 	BrowserRouter as Router,
-	useRoutes
+	useRoutes,
+	useLocation
 } from "react-router-dom";
 import './App.css';
 
 import CVForm from './modules/CVForm';
 import CVStyleSelection from './modules/CVStyleSelection';
 import CVPDF from './modules/CVPDF';
+
 import CustomLinkContainer from './components/CustomLinkContainer';
+import CustomPrevPageLink from './components/CustomPrevPageLink';
+import NotFound from './components/NotFound';
+
 import {
 	updateLocalStorage,
 	getItemFromLocal,
@@ -27,7 +32,11 @@ function Footer() {
 
 const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 	{
-		path: "/",
+		path: '*',
+		element: <NotFound />
+	},
+	{
+		path: '/',
 		element: <CVForm
 			handleResetData={handleResetData}
 			handleFormSubmit={handleFormSubmit}
@@ -35,7 +44,7 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 		/>
 	},
 	{
-		path: "/form",
+		path: '/form',
 		element: <CVForm
 			handleResetData={handleResetData}
 			handleFormSubmit={handleFormSubmit}
@@ -43,16 +52,24 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 		/>
 	},
 	{
-		path: "/styles",
+		path: '/styles',
 		element: <CVStyleSelection userData={userData} />,
-		children: [
-			{
-				path: 'cv/:id',
-				element: <CVPDF userData={userData} />
-			},
-		]
 	},
+	{
+		path: '/styles/cv/:id',
+		element: <CVPDF userData={userData} />
+	}
 ]);
+const pathnamesThatHasNav = [
+	'/form', '/', '/styles'
+]
+const RenderNavByPathname = () => {
+	const { pathname } = useLocation();
+	if (pathnamesThatHasNav.some(e => e === pathname)) {
+		return <CustomLinkContainer />
+	}
+	return <CustomPrevPageLink />
+}
 
 function AppWrapper() {
 	const initialUserData = {
@@ -63,7 +80,7 @@ function AppWrapper() {
 	}
 	const locallySavedData = getItemFromLocal('userData');
 	const [userData, setUserData] = useState(locallySavedData || initialUserData);
-
+	console.log(userData);
 	const handleFormSubmit = (e, formData) => {
 		e.preventDefault();
 		setUserData({ ...formData });
@@ -80,10 +97,11 @@ function AppWrapper() {
 		Array.from(document.querySelectorAll('input')).forEach(input => (input.value = ''));
 		deleteLocalStorage('userData');
 	};
+
 	return (
 		<Router>
 			<div className="App">
-				<CustomLinkContainer />
+				<RenderNavByPathname />
 				<App
 					handleResetData={handleResetData}
 					handleFormSubmit={handleFormSubmit}

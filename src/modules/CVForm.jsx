@@ -55,11 +55,12 @@ function CVForm(props) {
 		newCopyOfSelectedArr[fieldsetIndex][propKey] = value;
 		setCVInfo(CVInfo => ({
 			...CVInfo,
-			newCopyOfSelectedArr
+			[fieldsetType]: newCopyOfSelectedArr
 		}));
 	}
 
-	const deleteObjHandler = (params) => {
+	const deleteObjHandler = (e, params) => {
+		e.preventDefault();
 		const { fieldsetType, fieldsetIndex } = params;
 		const selectedArr = CVInfo[fieldsetType];
 		const newCopyOfSelectedArr = [...selectedArr];

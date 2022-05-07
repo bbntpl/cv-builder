@@ -32,7 +32,7 @@ const CUSTOM_FIELDS_DATA = {
 		{
 			lblTxt: 'Course Name',
 			lblFor: 'coursename',
-			propKey: 'fullName',
+			propKey: 'courseName',
 		},
 		{
 			lblTxt: 'School Name',

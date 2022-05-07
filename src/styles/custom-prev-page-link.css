@@ -1,0 +1,19 @@
+:root {
+	--color-white: invert(100%) sepia(100%) saturate(0%) hue-rotate(317deg) brightness(105%) contrast(102%);
+}
+
+.return-prev-page-container img {
+	filter: var(--color-white);
+}
+.return-prev-page-container {
+	width: 100%;
+}
+.return-prev-page-container > a {
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	float: left;
+	width: 100%;
+	padding: 20px;
+}
