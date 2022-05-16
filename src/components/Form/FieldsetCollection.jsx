@@ -2,10 +2,11 @@ import React from 'react';
 import FieldsCollectionContainer from './FieldsCollectionContainer';
 
 // Fieldset iteration of the specified cv info classification
-// Each fieldset contains collection of fields using the CUSTOM_FIELDS_DATA
+// Each fieldset contains collection of fields using the CUSTOM_FIELDS_DATA file
 function FieldsetCollection(props) {
 	const {
 		updateFieldChanged,
+		updateListChanged,
 		deleteObjHandler,
 		arrayOfFields,
 		totalFieldset,
@@ -18,6 +19,7 @@ function FieldsetCollection(props) {
 				<FieldsCollectionContainer
 					key={`${fieldsetType}${i}`}
 					updateFieldChanged={updateFieldChanged}
+					updateListChanged={updateListChanged}
 					CVInfo={arrayOfFields[i]}
 					fieldsetType={fieldsetType}
 					fieldsetIndex={i}

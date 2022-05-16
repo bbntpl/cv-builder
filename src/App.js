@@ -80,7 +80,6 @@ function AppWrapper() {
 	}
 	const locallySavedData = getItemFromLocal('userData');
 	const [userData, setUserData] = useState(locallySavedData || initialUserData);
-	console.log(userData);
 	const handleFormSubmit = (e, formData) => {
 		e.preventDefault();
 		setUserData({ ...formData });

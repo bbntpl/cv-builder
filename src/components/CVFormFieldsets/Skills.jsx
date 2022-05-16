@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import FieldsetCollection from '../Form/FieldsetCollection';
 import PlusThickIcon from '../../assets/icons/plus-thick.svg';
 
-export default function WorkExp(props) {
+export default function Skills(props) {
 	const {
 		handleChangeInArray,
 		handleList,
-		CVInfoWork,
+		CVInfoSkills,
 		addObjHandler,
 		deleteObjHandler
 	} = props;
-	const CVInfoWorkLength = CVInfoWork.length;
+	const CVInfoWorkLength = CVInfoSkills.length;
 	const [totalFieldset, setTotalFieldset] = useState(CVInfoWorkLength);
 
 	const incrementTotalFieldset = () => {
@@ -23,7 +23,7 @@ export default function WorkExp(props) {
 		if (!CVInfoWorkLength) {
 			incrementTotalFieldset();
 		} else {
-			const ifPrevFieldsAreEmpty = Object.keys(CVInfoWork[CVInfoWorkLength - 1]).length === 1;
+			const ifPrevFieldsAreEmpty = Object.keys(CVInfoSkills[CVInfoWorkLength - 1]).length === 1;
 			if (ifPrevFieldsAreEmpty) return;
 			incrementTotalFieldset();
 		}
@@ -32,12 +32,12 @@ export default function WorkExp(props) {
 	return (
 		<fieldset>
 			<legend className='cv-form__lbl'>
-				{'Work History'}
+				{'Skills Category'}
 			</legend>
 			<FieldsetCollection
 				updateFieldChanged={handleChangeInArray}
 				updateListChanged={handleList}
-				arrayOfFields={CVInfoWork}
+				arrayOfFields={CVInfoSkills}
 				totalFieldset={totalFieldset}
 				fieldsetType={'workExperience'}
 				deleteObjHandler={deleteObjHandler}
@@ -47,7 +47,7 @@ export default function WorkExp(props) {
 				onClick={addFieldsetIfPrevFieldsAreAllEmpty}
 			>
 				<img src={PlusThickIcon} />
-				Add work
+				Add Skill Category
 			</button>
 		</fieldset>
 	)

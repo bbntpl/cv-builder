@@ -10,6 +10,7 @@ function FieldsCollectionContainer(props) {
 		fieldsetType,
 		deleteObjHandler,
 		updateFieldChanged,
+		updateListChanged,
 		CVInfo,
 	} = props;
 	return (
@@ -28,6 +29,7 @@ function FieldsCollectionContainer(props) {
 
 			<IteratedFields
 				updateFieldChanged={updateFieldChanged}
+				updateListChanged={updateListChanged}
 				CVInfo={CVInfo}
 				fieldsetIndex={fieldsetIndex}
 				fieldsetType={fieldsetType}

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import BasicInfo from '../components/CVFormFieldsets/BasicInfo';
 import Edu from '../components/CVFormFieldsets/Edu';
 import WorkExp from '../components/CVFormFieldsets/Work';
+import Skills from '../components/CVFormFieldsets/Skills';
 
 import '../styles/cv-form-style.css';
 import { uniqueID } from '../util/reusable-funcs';
@@ -33,6 +34,8 @@ function FormOptionsContainer(props) {
 function CVForm(props) {
 	const { handleFormSubmit, handleResetData, userData } = props;
 	const [CVInfo, setCVInfo] = useState(userData);
+
+	// handle change on inputs - base property of the overall object
 	const handleChange = (e, params) => {
 		const { propKey } = params;
 		let updatedValue = {};
@@ -43,10 +46,14 @@ function CVForm(props) {
 		}));
 	}
 
-	const handleFormReset = (e) => { 
+	// reset the data
+	const handleFormReset = (e) => {
 		e.preventDefault();
 		handleResetData(setCVInfo);
 	}
+
+	// handle change of inputs that are iterable 
+	// base property that is an array
 	const handleChangeInArray = (e, params) => {
 		const { fieldsetType, propKey, fieldsetIndex } = params;
 		const { value } = e.target;
@@ -59,6 +66,22 @@ function CVForm(props) {
 		}));
 	}
 
+	// handle inputs that allows the output to display
+	// a list feature
+	const handleList = (e, params) => {
+		const { fieldsetType, propKey, fieldsetIndex } = params;
+		const { value } = e.target;
+		const selectedArr = CVInfo[fieldsetType];
+		const newCopyOfSelectedArr = [...selectedArr];
+		const list = value.includes('|') ? value.split('|') : [value];
+		newCopyOfSelectedArr[fieldsetIndex][propKey] = list;
+		setCVInfo(CVInfo => ({
+			...CVInfo,
+			[fieldsetType]: newCopyOfSelectedArr
+		}));
+	}
+	
+	//delete object from array by index
 	const deleteObjHandler = (e, params) => {
 		e.preventDefault();
 		const { fieldsetType, fieldsetIndex } = params;
@@ -73,6 +96,7 @@ function CVForm(props) {
 		}));
 	}
 
+	//add object from array by index
 	const addObjHandler = (propName) => {
 		const emptyObj = {
 			id: uniqueID()
@@ -99,7 +123,15 @@ function CVForm(props) {
 				/>
 				<WorkExp
 					handleChangeInArray={handleChangeInArray}
+					handleList={handleList}
 					CVInfoWork={CVInfo.workExperience}
+					addObjHandler={addObjHandler}
+					deleteObjHandler={deleteObjHandler}
+				/>
+				<Skills
+					handleChangeInArray={handleChangeInArray}
+					handleList={handleList}
+					CVInfoSkills={CVInfo.skills}
 					addObjHandler={addObjHandler}
 					deleteObjHandler={deleteObjHandler}
 				/>

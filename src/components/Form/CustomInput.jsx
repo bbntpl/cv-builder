@@ -1,17 +1,16 @@
 import React from 'react';
 
-export default function CustomField(props) {
+export default function CustomInput(props) {
 	const {
-		inputType = 'text',
 		lblTxt,
 		lblFor,
 		inputVal = '',
-		handleChange,
+		updateFieldChanged,
 		propKey,
 		fieldsetIndex,
 		fieldsetType
 	} = props;
-	const handleChangeArgs = {
+	const updateFieldChangedArgs = {
 		fieldsetType,
 		propKey,
 		fieldsetIndex
@@ -20,11 +19,9 @@ export default function CustomField(props) {
 		<div className="cv-form__c-field">
 			<label htmlFor={lblFor}>{lblTxt}</label>
 			<input
-				type={inputType}
-				id={lblFor}
 				name={lblFor}
 				value={inputVal}
-				onChange={(e) => handleChange(e, handleChangeArgs)}
+				onChange={(e) => updateFieldChanged(e, 	updateFieldChangedArgs)}
 			/>
 		</div>
 	)

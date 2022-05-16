@@ -28,11 +28,12 @@ export const styles = StyleSheet.create({
 		borderTop: '3px solid aliceblue',
 		fontSize: '18px',
 		textTransform: 'uppercase',
-		paddingTop: '20px'
+		padding: '20px 0 6px 0'
 	},
 	basicInfo: {
 		fontSize: '11px',
-		lineHeight: 1.5
+		lineHeight: 1.2,
+		paddingBottom: '4px'
 	},
 	headerText: {
 		fontSize: '26px',

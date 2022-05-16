@@ -71,6 +71,29 @@ const CUSTOM_FIELDS_DATA = {
 			lblFor: 'enddate',
 			propKey: 'endDate',
 		},
+		{
+			lblTxt: 'Descriptions',
+			lblFor: 'descriptions',
+			propKey: 'descriptions',
+			inputType: 'textarea'
+		}
+	],
+	skills: [
+		{
+			lblTxt: 'Skills Category',
+			lblFor: 'skillscategory',
+			propKey: 'skillsCategory',
+			fields: [{
+				lblTxt: 'Skill',
+				lblFor: 'skill',
+				propKey: 'skill'
+			},
+			{
+				lblTxt: 'Skill Level(Max: 10)',
+				lblFor: 'skilllevel',
+				propKey: 'skillLevel'
+			}]
+		}
 	]
 };
 
