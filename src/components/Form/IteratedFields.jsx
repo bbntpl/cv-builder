@@ -1,46 +1,50 @@
 import React from 'react';
-
-import CustomInput from './CustomInput';
-import CustomList from './CustomList';
 import CUSTOM_FIELDS_DATA from '../../data/custom-fields';
 
-// Iteration of Custom Field element
-function IteratedFields(props) {
+// components
+import CustomInputByType from './CustomInputByType';
+import SubFieldsetCollection from './SubFieldsetCollection';
+
+// A component that iterates the custom field element
+export default function IteratedFields(props) {
 	const {
-		updateFieldChanged,
-		updateListChanged,
+		handlerFuncs,
 		CVInfo,
-		fieldsetType,
-		fieldsetIndex
+		fieldsetInfo
 	} = props;
-	return CUSTOM_FIELDS_DATA[fieldsetType].map(field => {
-		if (field.inputType === 'textarea') {
+	const { fieldsetType } = fieldsetInfo;
+	return CUSTOM_FIELDS_DATA[fieldsetType].map((fieldsDataObj, customFieldIndex) => {
+		const hasSubFieldsProp = Object.prototype.hasOwnProperty.call(fieldsDataObj, 'subFields');
+		if (hasSubFieldsProp) {
+			const subFieldsetKey = Object.keys(fieldsDataObj['subFields'])[0];
 			return (
-				<CustomList
-					key={field.lblFor}
-					lblTxt={`${field.lblTxt}:`}
-					lblFor={field.lblFor}
-					updateListChanged={updateListChanged}
-					propKey={field.propKey}
-					inputVal={CVInfo[field.propKey]}
-					fieldsetIndex={fieldsetIndex}
-					fieldsetType={fieldsetType}
-				/>
+				<React.Fragment>
+					<CustomInputByType
+						key={fieldsDataObj.lblFor}
+						field={fieldsDataObj}
+						handlerFuncs={handlerFuncs}
+						CVInfo={CVInfo}
+						fieldsetInfo={fieldsetInfo}
+					/>
+					<SubFieldsetCollection
+						key={fieldsDataObj.lblFor}
+						handlerFuncs={handlerFuncs}
+						arrayOfFields={fieldsDataObj['subFields'][subFieldsetKey]}
+						fieldsetType={fieldsetType}
+						subFieldsetType={subFieldsetKey}
+						customFieldIndex={customFieldIndex}
+					/>
+				</React.Fragment>
 			)
 		}
 		return (
-			<CustomInput
-				key={field.lblFor}
-				lblTxt={`${field.lblTxt}:`}
-				lblFor={field.lblFor}
-				updateFieldChanged={updateFieldChanged}
-				propKey={field.propKey}
-				inputVal={CVInfo[field.propKey]}
-				fieldsetIndex={fieldsetIndex}
-				fieldsetType={fieldsetType}
+			<CustomInputByType
+				key={fieldsDataObj.lblFor}
+				field={fieldsDataObj}
+				handlerFuncs={handlerFuncs}
+				CVInfo={CVInfo}
+				fieldsetInfo={fieldsetInfo}
 			/>
 		)
 	});
 }
-
-export default IteratedFields;

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import BasicInfo from '../components/CVFormFieldsets/BasicInfo';
 import Edu from '../components/CVFormFieldsets/Edu';
 import WorkExp from '../components/CVFormFieldsets/Work';
-import Skills from '../components/CVFormFieldsets/Skills';
+import SkillCategory from '../components/CVFormFieldsets/SkillCategory';
 
 import '../styles/cv-form-style.css';
 import { uniqueID } from '../util/reusable-funcs';
@@ -55,9 +55,16 @@ function CVForm(props) {
 	// handle change of inputs that are iterable 
 	// base property that is an array
 	const handleChangeInArray = (e, params) => {
-		const { fieldsetType, propKey, fieldsetIndex } = params;
+		const {
+			fieldsetType,
+			propKey,
+			fieldsetIndex,
+			fieldsetSubfieldType
+		} = params;
 		const { value } = e.target;
-		const selectedArr = CVInfo[fieldsetType];
+		const selectedArr = fieldsetSubfieldType
+			? CVInfo[fieldsetType][fieldsetSubfieldType]
+			: CVInfo[fieldsetType];
 		const newCopyOfSelectedArr = [...selectedArr];
 		newCopyOfSelectedArr[fieldsetIndex][propKey] = value;
 		setCVInfo(CVInfo => ({
@@ -68,7 +75,7 @@ function CVForm(props) {
 
 	// handle inputs that allows the output to display
 	// a list feature
-	const handleList = (e, params) => {
+	const handleListChange = (e, params) => {
 		const { fieldsetType, propKey, fieldsetIndex } = params;
 		const { value } = e.target;
 		const selectedArr = CVInfo[fieldsetType];
@@ -80,7 +87,7 @@ function CVForm(props) {
 			[fieldsetType]: newCopyOfSelectedArr
 		}));
 	}
-	
+
 	//delete object from array by index
 	const deleteObjHandler = (e, params) => {
 		e.preventDefault();
@@ -108,37 +115,36 @@ function CVForm(props) {
 		}));
 	}
 
+	const handlerFuncs = {
+		handleChange,
+		handleChangeInArray,
+		handleListChange,
+		addObjHandler,
+		deleteObjHandler
+	};
 	return (
 		<div className="cv-form primary-el-with-shadow">
 			<form className="cv-form__inner" id='cv-form__inner'>
 				<BasicInfo
-					handleChange={handleChange}
 					CVInfo={CVInfo}
+					handlerFuncs={handlerFuncs}
 				/>
 				<Edu
-					handleChangeInArray={handleChangeInArray}
 					CVInfoEdu={CVInfo.eduHistory}
-					addObjHandler={addObjHandler}
-					deleteObjHandler={deleteObjHandler}
+					handlerFuncs={handlerFuncs}
 				/>
 				<WorkExp
-					handleChangeInArray={handleChangeInArray}
-					handleList={handleList}
 					CVInfoWork={CVInfo.workExperience}
-					addObjHandler={addObjHandler}
-					deleteObjHandler={deleteObjHandler}
+					handlerFuncs={handlerFuncs}
 				/>
-				<Skills
-					handleChangeInArray={handleChangeInArray}
-					handleList={handleList}
-					CVInfoSkills={CVInfo.skills}
-					addObjHandler={addObjHandler}
-					deleteObjHandler={deleteObjHandler}
+				<SkillCategory
+					CVInfoSkillCat={CVInfo.skillCategories}
+					handlerFuncs={handlerFuncs}
 				/>
 				<FormOptionsContainer
+					CVInfo={CVInfo}
 					handleFormSubmit={handleFormSubmit}
 					handleFormReset={handleFormReset}
-					CVInfo={CVInfo}
 				/>
 			</form>
 		</div>

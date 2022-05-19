@@ -6,14 +6,10 @@ import DeleteIcon from '../../assets/icons/delete.svg';
 // triggering the event it contains will delete the
 // fieldset itself including the associated data
 function FieldsetDeleteBtn(props) {
-	const {
-		deleteObjHandler,
-		fieldsetIndex,
-		fieldsetType
-	} = props;
+	const {deleteObjHandler, fieldsetInfo} = props;
 	return (
 		<button
-			onClick={(e) => deleteObjHandler(e, { fieldsetType, fieldsetIndex })}
+			onClick={(e) => deleteObjHandler(e, fieldsetInfo)}
 			className="cv-form__rmv-fieldset">
 			<img src={DeleteIcon}></img>
 		</button>

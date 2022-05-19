@@ -3,12 +3,8 @@ import FieldsetCollection from '../Form/FieldsetCollection';
 import PlusThickIcon from '../../assets/icons/plus-thick.svg';
 
 export default function Edu(props) {
-	const {
-		handleChangeInArray,
-		CVInfoEdu,
-		addObjHandler,
-		deleteObjHandler
-	} = props;
+	const { handlerFuncs, CVInfoEdu } = props;
+	const { addObjHandler } = handlerFuncs;
 	const CVInfoEduLength = CVInfoEdu.length;
 	const [totalFieldset, setTotalFieldset] = useState(CVInfoEduLength);
 
@@ -37,11 +33,10 @@ export default function Edu(props) {
 				{'Education History'}
 			</legend>
 			<FieldsetCollection
-				updateFieldChanged={handleChangeInArray}
 				arrayOfFields={CVInfoEdu}
 				totalFieldset={totalFieldset}
 				fieldsetType={'eduHistory'}
-				deleteObjHandler={deleteObjHandler}
+				handlerFuncs={handlerFuncs}
 			/>
 			<button
 				className='cv-form__add-fieldset'

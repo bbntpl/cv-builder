@@ -3,13 +3,8 @@ import FieldsetCollection from '../Form/FieldsetCollection';
 import PlusThickIcon from '../../assets/icons/plus-thick.svg';
 
 export default function WorkExp(props) {
-	const {
-		handleChangeInArray,
-		handleList,
-		CVInfoWork,
-		addObjHandler,
-		deleteObjHandler
-	} = props;
+	const { CVInfoWork, handlerFuncs } = props;
+	const { addObjHandler } = handlerFuncs;
 	const CVInfoWorkLength = CVInfoWork.length;
 	const [totalFieldset, setTotalFieldset] = useState(CVInfoWorkLength);
 
@@ -35,12 +30,10 @@ export default function WorkExp(props) {
 				{'Work History'}
 			</legend>
 			<FieldsetCollection
-				updateFieldChanged={handleChangeInArray}
-				updateListChanged={handleList}
+				handlerFuncs={handlerFuncs}
 				arrayOfFields={CVInfoWork}
 				totalFieldset={totalFieldset}
 				fieldsetType={'workExperience'}
-				deleteObjHandler={deleteObjHandler}
 			/>
 			<button
 				className='cv-form__add-fieldset'

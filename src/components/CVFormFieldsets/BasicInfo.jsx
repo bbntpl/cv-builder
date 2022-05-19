@@ -1,15 +1,15 @@
 import React from 'react';
-import FieldsCollectionContainer from '../Form/FieldsCollectionContainer';
+import FieldsCollectionContainer from '../Form/FieldCollection';
 
 export default function BasicInfo(props) {
-	const { handleChange, CVInfo } = props;
+	const { handlerFuncs, CVInfo } = props;
 	return (
 		<fieldset>
 			<legend className='cv-form__lbl'>
 				{'Basic Information'}
 			</legend>
 			<FieldsCollectionContainer
-				updateFieldChanged={handleChange}
+				handlerFuncs={handlerFuncs}
 				CVInfo={CVInfo}
 				fieldsetType={'basicInfo'}
 			/>

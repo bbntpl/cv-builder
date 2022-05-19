@@ -75,7 +75,7 @@ function AppWrapper() {
 	const initialUserData = {
 		eduHistory: [],
 		workExperience: [],
-		skills: [],
+		skillCategories: [],
 		extra: [],
 	}
 	const locallySavedData = getItemFromLocal('userData');

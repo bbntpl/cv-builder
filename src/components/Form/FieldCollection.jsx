@@ -8,11 +8,16 @@ function FieldsCollectionContainer(props) {
 	const {
 		fieldsetIndex = 0,
 		fieldsetType,
-		deleteObjHandler,
-		updateFieldChanged,
-		updateListChanged,
+		handlerFuncs,
 		CVInfo,
 	} = props;
+
+	const { deleteObjHandler } = handlerFuncs;
+
+	const fieldsetInfo = {
+		fieldsetIndex,
+		fieldsetType
+	};
 	return (
 		<div
 			className='cv-form__input-collections'
@@ -22,17 +27,13 @@ function FieldsCollectionContainer(props) {
 				fieldsetType !== 'basicInfo' &&
 				<FieldsetDeleteBtn
 					deleteObjHandler={deleteObjHandler}
-					fieldsetIndex={fieldsetIndex}
-					fieldsetType={fieldsetType}
+					fieldsetInfo={fieldsetInfo}
 				/>
 			}
-
 			<IteratedFields
-				updateFieldChanged={updateFieldChanged}
-				updateListChanged={updateListChanged}
+				handlerFuncs={handlerFuncs}
 				CVInfo={CVInfo}
-				fieldsetIndex={fieldsetIndex}
-				fieldsetType={fieldsetType}
+				fieldsetInfo={fieldsetInfo}
 			/>
 		</div >
 	)

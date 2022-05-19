@@ -78,22 +78,24 @@ const CUSTOM_FIELDS_DATA = {
 			inputType: 'textarea'
 		}
 	],
-	skills: [
+	skillCategories: [
 		{
 			lblTxt: 'Skills Category',
 			lblFor: 'skillscategory',
 			propKey: 'skillsCategory',
-			fields: [{
-				lblTxt: 'Skill',
-				lblFor: 'skill',
-				propKey: 'skill'
-			},
-			{
-				lblTxt: 'Skill Level(Max: 10)',
-				lblFor: 'skilllevel',
-				propKey: 'skillLevel'
-			}]
-		}
+			subFields: {
+				skills: [{
+					lblTxt: 'Skill',
+					lblFor: 'skill',
+					propKey: 'skill'
+				},
+				{
+					lblTxt: 'Skill Level(Max: 10)',
+					lblFor: 'skilllevel',
+					propKey: 'skillLevel'
+				}]
+			}
+		},
 	]
 };
 
