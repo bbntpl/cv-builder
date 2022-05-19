@@ -28,6 +28,7 @@
 .cv-form__inner>fieldset {
 	margin: 2.5rem 0;
 	border: none;
+	width: inherit;
 }
 
 .cv-form__c-field, .cv-form__t-field {
@@ -42,7 +43,7 @@
 }
 
 .cv-form__t-field {
-	grid-column: 1/5;
+	grid-column: 1 / -1;
 }
 
 .cv-form__t-field>textarea {
@@ -51,13 +52,28 @@
 	resize: none;
 }
 
+.cv-form__inner>fieldset>.cv-form__input-collections {
+	border-bottom: 1px solid rgb(180, 180, 180);
+}
 .cv-form__input-collections {
 	display: grid;
 	position: relative;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(180px, 4fr));
 	grid-gap: 2rem 2rem;
 	justify-content: flex-start;
 	padding: 1.8rem 0;
+	width: 100%;
+	/* border: 1px solid #020202;
+	border-radius: 15px;
+	background-color: #fff; */
+}
+
+.cv-form__subfields {
+	grid-gap: 2rem 2rem;
+	justify-content: flex-start;
+	padding: 1.8rem 0;
+	width: 100%;
+	grid-column: 1/-1;
 }
 
 .cv-form__rmv-fieldset {

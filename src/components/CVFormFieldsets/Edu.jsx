@@ -10,7 +10,7 @@ export default function Edu(props) {
 
 	const incrementTotalFieldset = () => {
 		setTotalFieldset(totalFieldset + 1);
-		addObjHandler('eduHistory');
+		addObjHandler({fieldsetType: 'eduHistory'});
 	}
 
 	// prevent adding a new fieldset if the fields 

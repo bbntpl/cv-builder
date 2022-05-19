@@ -12,24 +12,24 @@ export default function IteratedFields(props) {
 		CVInfo,
 		fieldsetInfo
 	} = props;
-	const { fieldsetType } = fieldsetInfo;
+	const { fieldsetType, fieldsetIndex } = fieldsetInfo;
 	return CUSTOM_FIELDS_DATA[fieldsetType].map((fieldsDataObj, customFieldIndex) => {
 		const hasSubFieldsProp = Object.prototype.hasOwnProperty.call(fieldsDataObj, 'subFields');
 		if (hasSubFieldsProp) {
 			const subFieldsetKey = Object.keys(fieldsDataObj['subFields'])[0];
 			return (
-				<React.Fragment>
+				<React.Fragment key={fieldsDataObj.lblFor}>
 					<CustomInputByType
-						key={fieldsDataObj.lblFor}
 						field={fieldsDataObj}
 						handlerFuncs={handlerFuncs}
 						CVInfo={CVInfo}
 						fieldsetInfo={fieldsetInfo}
 					/>
+					<br></br>
 					<SubFieldsetCollection
-						key={fieldsDataObj.lblFor}
 						handlerFuncs={handlerFuncs}
-						arrayOfFields={fieldsDataObj['subFields'][subFieldsetKey]}
+						arrayOfFields={CVInfo[subFieldsetKey] || []}
+						fieldsetIndex={fieldsetIndex}
 						fieldsetType={fieldsetType}
 						subFieldsetType={subFieldsetKey}
 						customFieldIndex={customFieldIndex}

@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
-import { uniqueID } from '../../util/reusable-funcs';
 import PlusThickIcon from '../../assets/icons/plus-thick.svg';
 import SubFieldCollection from './SubFieldCollection';
 
-// Component that iterates the SubFieldsCollectionContainer
+// Component that iterates the SubFieldCollection
 function SubFieldsetElements(params) {
 	const {
 		handlerFuncs,
 		arrayOfFields,
 		totalSubFieldset,
 		fieldsetType,
+		fieldsetIndex,
 		subFieldsetType,
 		customFieldIndex
 	} = params;
 	const subFieldsetElements = [];
-	for (let i = 0; i < totalSubFieldset; i += 1) {
-		if (arrayOfFields.length - 1 >= i) {
+	for (let subFieldsetIndex = 0; subFieldsetIndex < totalSubFieldset; subFieldsetIndex += 1) {
+		if (arrayOfFields.length - 1 >= subFieldsetIndex) {
 			subFieldsetElements.push(
 				<SubFieldCollection
-					key={uniqueID()}
+					key={`${fieldsetType}${fieldsetIndex}${subFieldsetIndex}${subFieldsetType}`}
 					handlerFuncs={handlerFuncs}
-					CVInfo={arrayOfFields[i]}
-					fieldsetIndex={i}
+					CVInfo={arrayOfFields[subFieldsetIndex]}
+					fieldsetIndex={fieldsetIndex}
 					fieldsetType={fieldsetType}
+					subFieldsetIndex={subFieldsetIndex}
 					subFieldsetType={subFieldsetType}
 					customFieldIndex={customFieldIndex}
 				/>
@@ -41,6 +42,7 @@ export default function SubFieldsetCollection(props) {
 		handlerFuncs,
 		arrayOfFields,
 		fieldsetType,
+		fieldsetIndex,
 		subFieldsetType,
 		customFieldIndex
 	} = props;
@@ -48,7 +50,11 @@ export default function SubFieldsetCollection(props) {
 	const [totalSubFieldset, setTotalSubFieldset] = useState(arrayOfFieldsLength);
 	const incrementTotalSubFieldset = () => {
 		setTotalSubFieldset(totalSubFieldset + 1);
-		handlerFuncs.addObjHandler('workExperience');
+		handlerFuncs.addObjHandler({
+			fieldsetType,
+			fieldsetIndex,
+			subFieldsetType
+		});
 	}
 
 	const addFieldsetIfPrevFieldsAreAllEmpty = (e) => {
@@ -70,6 +76,7 @@ export default function SubFieldsetCollection(props) {
 				arrayOfFields={arrayOfFields}
 				totalSubFieldset={totalSubFieldset}
 				fieldsetType={fieldsetType}
+				fieldsetIndex={fieldsetIndex}
 				subFieldsetType={subFieldsetType}
 				customFieldIndex={customFieldIndex}
 			/>
@@ -78,7 +85,7 @@ export default function SubFieldsetCollection(props) {
 				onClick={addFieldsetIfPrevFieldsAreAllEmpty}
 			>
 				<img src={PlusThickIcon} />
-				{`Add ${arrayOfFields[0].lblTxt}`}
+				{`Add ${subFieldsetType}`}
 			</button>
 		</div>
 	);

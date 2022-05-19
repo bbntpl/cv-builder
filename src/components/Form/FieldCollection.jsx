@@ -4,7 +4,7 @@ import FieldsetDeleteBtn from './FieldsetDeleteBtn';
 import IteratedFields from './IteratedFields';
 
 // the container for the set of iterated fields(input & label)
-function FieldsCollectionContainer(props) {
+export default function FieldCollection(props) {
 	const {
 		fieldsetIndex = 0,
 		fieldsetType,
@@ -38,5 +38,3 @@ function FieldsCollectionContainer(props) {
 		</div >
 	)
 }
-
-export default FieldsCollectionContainer;

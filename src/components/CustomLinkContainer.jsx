@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/switch-link-style.css';
 import CustomLink from './CustomLink';
 
-function CustomLinkContainer() {
+export default function CustomLinkContainer() {
 	return (
 		<nav className='cv-link__container'>
 			<CustomLink
@@ -18,5 +18,3 @@ function CustomLinkContainer() {
 		</nav>
 	)
 }
-
-export default CustomLinkContainer;

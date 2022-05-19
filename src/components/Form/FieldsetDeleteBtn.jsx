@@ -6,7 +6,7 @@ import DeleteIcon from '../../assets/icons/delete.svg';
 // triggering the event it contains will delete the
 // fieldset itself including the associated data
 function FieldsetDeleteBtn(props) {
-	const {deleteObjHandler, fieldsetInfo} = props;
+	const { deleteObjHandler, fieldsetInfo } = props;
 	return (
 		<button
 			onClick={(e) => deleteObjHandler(e, fieldsetInfo)}

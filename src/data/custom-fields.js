@@ -90,7 +90,7 @@ const CUSTOM_FIELDS_DATA = {
 					propKey: 'skill'
 				},
 				{
-					lblTxt: 'Skill Level(Max: 10)',
+					lblTxt: 'Skill Level(1-5)',
 					lblFor: 'skilllevel',
 					propKey: 'skillLevel'
 				}]

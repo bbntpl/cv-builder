@@ -5,39 +5,17 @@ import BasicInfo from '../components/CVFormFieldsets/BasicInfo';
 import Edu from '../components/CVFormFieldsets/Edu';
 import WorkExp from '../components/CVFormFieldsets/Work';
 import SkillCategory from '../components/CVFormFieldsets/SkillCategory';
+import FormOptionsContainer from '../components/Form/FormOptionsContainer';
 
 import '../styles/cv-form-style.css';
 import { uniqueID } from '../util/reusable-funcs';
-
-function FormOptionsContainer(props) {
-	const { handleFormSubmit, handleFormReset, CVInfo } = props;
-	return (
-		<div className='cv-form__options'>
-			<button
-				type='submit'
-				className='cv-form__submit'
-				onClick={(e) => handleFormSubmit(e, CVInfo)}
-			>
-				Save
-			</button>
-			<button
-				type='reset'
-				className='cv-form__reset'
-				onClick={handleFormReset}
-			>
-				Clear All
-			</button>
-		</div>
-	)
-}
 
 function CVForm(props) {
 	const { handleFormSubmit, handleResetData, userData } = props;
 	const [CVInfo, setCVInfo] = useState(userData);
 
-	// handle change on inputs - base property of the overall object
-	const handleChange = (e, params) => {
-		const { propKey } = params;
+	// handle change on inputs - base property of the CV info
+	const handleChange = (e, { propKey }) => {
 		let updatedValue = {};
 		updatedValue = { [propKey]: e.target.value };
 		setCVInfo(CVInfo => ({
@@ -46,25 +24,45 @@ function CVForm(props) {
 		}));
 	}
 
-	// reset the data
+	// it empties the data(CVInfo)
 	const handleFormReset = (e) => {
 		e.preventDefault();
 		handleResetData(setCVInfo);
 	}
 
-	// handle change of inputs that are iterable 
-	// base property that is an array
-	const handleChangeInArray = (e, params) => {
+	const updateSubItemsInArr = (params) => {
 		const {
 			fieldsetType,
 			propKey,
 			fieldsetIndex,
-			fieldsetSubfieldType
+			subFieldsetType,
+			subFieldsetIndex,
+			value
 		} = params;
-		const { value } = e.target;
-		const selectedArr = fieldsetSubfieldType
-			? CVInfo[fieldsetType][fieldsetSubfieldType]
-			: CVInfo[fieldsetType];
+		const itemsArr = CVInfo[fieldsetType];
+		const copiedItemsArr = [...itemsArr];
+
+		// add property with the value as an array if the property is not yet defined
+		if (!Object.prototype.hasOwnProperty.call(copiedItemsArr[fieldsetIndex], subFieldsetType)) {
+			copiedItemsArr[fieldsetIndex][subFieldsetType] = [];
+		}
+		const copiedSubItemsArr = copiedItemsArr[fieldsetIndex][subFieldsetType];
+		copiedSubItemsArr[subFieldsetIndex][propKey] = value;
+
+		setCVInfo(CVInfo => ({
+			...CVInfo,
+			[fieldsetType]: copiedItemsArr
+		}));
+	}
+
+	const updateItemsInArr = (params) => {
+		const {
+			value,
+			fieldsetType,
+			propKey,
+			fieldsetIndex,
+		} = params;
+		const selectedArr = CVInfo[fieldsetType];
 		const newCopyOfSelectedArr = [...selectedArr];
 		newCopyOfSelectedArr[fieldsetIndex][propKey] = value;
 		setCVInfo(CVInfo => ({
@@ -73,8 +71,24 @@ function CVForm(props) {
 		}));
 	}
 
-	// handle inputs that allows the output to display
-	// a list feature
+	// update the value after change from the inputs within an array
+	const handleChangeInArray = (e, params) => {
+		const {
+			fieldsetType,
+			propKey,
+			fieldsetIndex,
+			subFieldsetType,
+			subFieldsetIndex
+		} = params;
+		const { value } = e.target;
+		if (subFieldsetType && typeof subFieldsetIndex !== 'undefined') {
+			updateSubItemsInArr({ ...params, value });
+		} else {
+			updateItemsInArr({ value, fieldsetType, propKey, fieldsetIndex })
+		}
+	}
+	// update the value after change from the input 
+	// that can be featured as a list
 	const handleListChange = (e, params) => {
 		const { fieldsetType, propKey, fieldsetIndex } = params;
 		const { value } = e.target;
@@ -88,10 +102,29 @@ function CVForm(props) {
 		}));
 	}
 
-	//delete object from array by index
-	const deleteObjHandler = (e, params) => {
-		e.preventDefault();
-		const { fieldsetType, fieldsetIndex } = params;
+	// delete an object from array within an array
+	const deleteSubItem = (params) => {
+		const {
+			fieldsetType,
+			fieldsetIndex,
+			subFieldsetType,
+			subFieldsetIndex,
+		} = params;
+		const itemsArr = CVInfo[fieldsetType];
+		const copiedItemsArr = [...itemsArr];
+		const copiedSubItemsArr = copiedItemsArr[fieldsetIndex][subFieldsetType];
+		const reducedArr = copiedSubItemsArr.filter((_, itemIndex) => {
+			return itemIndex !== subFieldsetIndex
+		});
+		copiedItemsArr[fieldsetIndex][subFieldsetType] = reducedArr;
+		setCVInfo(CVInfo => ({
+			...CVInfo,
+			[fieldsetType]: copiedItemsArr
+		}));
+	}
+
+	// delete an object from array
+	const deleteItem = ({ fieldsetType, fieldsetIndex }) => {
 		const selectedArr = CVInfo[fieldsetType];
 		const newCopyOfSelectedArr = [...selectedArr];
 		const reducedArr = newCopyOfSelectedArr.filter((_, itemIndex) => {
@@ -103,16 +136,65 @@ function CVForm(props) {
 		}));
 	}
 
-	//add object from array by index
-	const addObjHandler = (propName) => {
+	// update data after deleting a specific object from
+	// the target array property
+	const deleteObjHandler = (e, params) => {
+		e.preventDefault();
+		const {
+			fieldsetType,
+			fieldsetIndex,
+			subFieldsetType,
+			subFieldsetIndex
+		} = params;
+		if (subFieldsetType && typeof subFieldsetIndex !== 'undefined') {
+			deleteSubItem(params);
+		} else {
+			deleteItem({ fieldsetType, fieldsetIndex });
+		}
+	}
+
+	// add an object in an array under a base property array
+	const addSubItem = (params) => {
+		const {
+			emptyObj,
+			fieldsetType,
+			fieldsetIndex,
+			subFieldsetType
+		} = params;
+		const selectedArr = CVInfo[fieldsetType];
+		const copiedArr = [...selectedArr];
+
+		// add property with the value as an array if the property is not yet defined
+		if (!Object.prototype.hasOwnProperty.call(copiedArr[fieldsetIndex], subFieldsetType)) {
+			copiedArr[fieldsetIndex][subFieldsetType] = [];
+		}
+		const copiedArrOfSubItems = copiedArr[fieldsetIndex][subFieldsetType].concat(emptyObj);
+		copiedArr[fieldsetIndex][subFieldsetType] = copiedArrOfSubItems;
+		setCVInfo(CVInfo => ({
+			...CVInfo,
+			[fieldsetType]: copiedArr
+		}));
+	}
+
+	// add an object in a base property array
+	const addItem = ({ fieldsetType, emptyObj }) => {
+		const selectedArr = CVInfo[fieldsetType].concat(emptyObj);
+		setCVInfo(CVInfo => ({
+			...CVInfo,
+			[fieldsetType]: selectedArr
+		}));
+	}
+
+	//update the data by adding an object in a base property array
+	const addObjHandler = ({ fieldsetType, fieldsetIndex, subFieldsetType }) => {
 		const emptyObj = {
 			id: uniqueID()
 		};
-		const selectedArr = CVInfo[propName].concat(emptyObj)
-		setCVInfo(CVInfo => ({
-			...CVInfo,
-			[propName]: selectedArr
-		}));
+		if (subFieldsetType) {
+			addSubItem({ fieldsetType, emptyObj, fieldsetIndex, subFieldsetType });
+		} else {
+			addItem({ fieldsetType, emptyObj });
+		}
 	}
 
 	const handlerFuncs = {

@@ -10,7 +10,7 @@ export default function WorkExp(props) {
 
 	const incrementTotalFieldset = () => {
 		setTotalFieldset(totalFieldset + 1);
-		addObjHandler('workExperience');
+		addObjHandler({ fieldsetType: 'workExperience' });
 	}
 
 	const addFieldsetIfPrevFieldsAreAllEmpty = (e) => {

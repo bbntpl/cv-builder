@@ -10,7 +10,8 @@ export default function CustomInput(props) {
 	const {
 		fieldsetIndex,
 		fieldsetType,
-		subFieldsetType
+		subFieldsetType,
+		subFieldsetIndex
 	} = fieldsetInfo;
 	const {
 		lblTxt,
@@ -28,7 +29,8 @@ export default function CustomInput(props) {
 		fieldsetType,
 		propKey,
 		fieldsetIndex,
-		subFieldsetType
+		subFieldsetType,
+		subFieldsetIndex
 	};
 	return (
 		<div className="cv-form__c-field">

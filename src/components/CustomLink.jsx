@@ -6,7 +6,7 @@ import {
 	Link
 } from 'react-router-dom';
 
-function CustomLink(props) {
+export default function CustomLink(props) {
 	const { to, linkText } = props;
 	const resolved = useResolvedPath(to);
 	const match = useMatch({ path: resolved.pathname, end: true });
@@ -26,5 +26,3 @@ CustomLink.propTypes = {
 	to: PropTypes.string,
 	linkText: PropTypes.string
 };
-
-export default CustomLink;

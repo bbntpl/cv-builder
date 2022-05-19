@@ -22,7 +22,7 @@ export default function IteratedSubFields(props) {
 	} = fieldsetInfo;
 	const customFieldObject = CUSTOM_FIELDS_DATA[fieldsetType][customFieldIndex];
 	const subFieldObjects = customFieldObject['subFields'][subFieldsetType];
-	return subFieldObjects.map(subFieldsDataObj => {
+	return subFieldObjects.map((subFieldsDataObj, i) => {
 		// compiled properties associated with the cv form element
 		const formAttrsData = {
 			lblTxt: `${subFieldsDataObj.lblTxt}:`,
@@ -32,7 +32,7 @@ export default function IteratedSubFields(props) {
 		};
 		return (
 			<CustomInput
-				key={subFieldsDataObj.lblFor}
+				key={`${subFieldsDataObj.lblFor}${i}`}
 				formAttrsData={formAttrsData}
 				handleChangeInArray={handleChangeInArray}
 				handleChange={handleChange}

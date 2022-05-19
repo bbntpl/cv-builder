@@ -5,7 +5,7 @@ import {
 import ReturnPrevPageArrowIcon from '../assets/icons/keyboard-return.svg';
 import '../styles/custom-prev-page-link.css';
 
-function CustomPrevPageLink() {
+export default function CustomPrevPageLink() {
 	const navigate = useNavigate();
 	return (
 		<div className='return-prev-page-container'>
@@ -16,5 +16,3 @@ function CustomPrevPageLink() {
 		</div>
 	)
 }
-
-export default CustomPrevPageLink;

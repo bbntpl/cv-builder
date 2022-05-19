@@ -6,12 +6,10 @@ const containerStyles = {
 const textStyles ={
 	color: 'white'
 }
-function NotFound() {
+export default function NotFound() {
 	return (
 		<div style={containerStyles} className='return-prev-page-container'>
 			<h1 style={textStyles}><strong>404</strong>- Page not found</h1>
 		</div>
 	)
 }
-
-export default NotFound;

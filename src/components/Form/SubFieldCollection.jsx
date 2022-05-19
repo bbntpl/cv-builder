@@ -1,14 +1,14 @@
 import React from 'react';
 import '../../styles/cv-form-style.css';
-import { uniqueID } from '../../util/reusable-funcs';
 import FieldsetDeleteBtn from './FieldsetDeleteBtn';
 import IteratedSubFields from './IteratedSubFields';
 
 // the container for the set of iterated fields(input & label)
-export default function SubFieldsCollectionContainer(props) {
+export default function SubFieldCollection(props) {
 	const {
-		fieldsetIndex = 0,
+		fieldsetIndex,
 		fieldsetType,
+		subFieldsetIndex = 0,
 		subFieldsetType,
 		handlerFuncs,
 		CVInfo,
@@ -21,12 +21,12 @@ export default function SubFieldsCollectionContainer(props) {
 		customFieldIndex,
 		fieldsetIndex,
 		fieldsetType,
+		subFieldsetIndex,
 		subFieldsetType,
 	};
 	return (
 		<div
 			className='cv-form__input-collections'
-			key={uniqueID()}
 		>
 			<FieldsetDeleteBtn
 				deleteObjHandler={deleteObjHandler}

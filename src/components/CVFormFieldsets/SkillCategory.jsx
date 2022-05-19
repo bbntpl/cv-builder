@@ -9,7 +9,7 @@ export default function SkillCategory(props) {
 	const [totalFieldset, setTotalFieldset] = useState(CVInfoSkillCatLen);
 	const incrementTotalFieldset = () => {
 		setTotalFieldset(totalFieldset + 1);
-		addObjHandler('skillCategories');
+		addObjHandler({ fieldsetType: 'skillCategories' });
 	}
 
 	const addFieldsetIfPrevFieldsAreAllEmpty = (e) => {
