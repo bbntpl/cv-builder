@@ -1,16 +1,14 @@
 import React from 'react';
-import {
-	Document,
-	Page,
-	View,
-} from '@react-pdf/renderer';
+import { Document, Page, View } from '@react-pdf/renderer';
 import BasicInfo from './BasicInfo';
 import Education from './Education';
+import Experience from './Experience';
+import Skills from './Skills';
 import { styles } from './styles';
 
 export default (props) => {
 	const { userData } = props;
-	const { eduHistory } = userData;
+	const { eduHistory, workExperience, skillCategories } = userData;
 	return (
 		<Document
 			author={userData.fullName || 'unknown'}
@@ -22,9 +20,11 @@ export default (props) => {
 				<view style={styles.container}>
 					<View style={styles.leftColumn}>
 						<BasicInfo userData={userData} />
+						<Skills skillCategories={skillCategories} />
 					</View>
 					<View style={styles.rightColumn}>
 						<Education eduHistory={eduHistory} />
+						<Experience workExperience={workExperience} />
 					</View>
 				</view>
 			</Page>

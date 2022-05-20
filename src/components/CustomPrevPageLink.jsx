@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-	useNavigate
-} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReturnPrevPageArrowIcon from '../assets/icons/keyboard-return.svg';
 import '../styles/custom-prev-page-link.css';
 

@@ -27,6 +27,12 @@ const CUSTOM_FIELDS_DATA = {
 			lblFor: 'website',
 			propKey: 'website',
 		},
+		{
+			lblTxt: 'Your Picture',
+			lblFor: 'yourpicture',
+			propKey: 'yourPicture',
+			inputType: 'file'
+		}
 	],
 	eduHistory: [
 		{

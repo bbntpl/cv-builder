@@ -1,0 +1,20 @@
+.pdf-viewer-contaienr{
+	display: flex;
+	flex-direction: column;
+	height: max-content;
+	gap: 20px;
+}
+
+.pdf-options{
+	display: flex;
+	gap: 15px;
+	padding: 0 0 .5rem 0;
+}
+
+.pdf-options > a, .pdf-options > button {
+	cursor: pointer;
+	text-decoration: none;
+	background-color: aliceblue;
+	color: rgb(61, 61, 61);
+	padding: 3px 6px; 
+}

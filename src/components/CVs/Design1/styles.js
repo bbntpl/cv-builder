@@ -22,8 +22,15 @@ export const styles = StyleSheet.create({
 	},
 	rightColumn: {
 		width: 425,
-		padding: '30px 15px',
+		padding: '30px 30px 30px 15px',
 	},
+	headerText: {
+		fontSize: 26,
+		padding: '18px 0 0 0',
+		textAlign: 'left',
+		textTransform: 'uppercase',
+	},
+	// basic info component styles
 	fullName: {
 		borderTop: '3px solid aliceblue',
 		fontSize: '18px',
@@ -31,41 +38,50 @@ export const styles = StyleSheet.create({
 		padding: '20px 0 6px 0'
 	},
 	basicInfo: {
-		fontSize: '11px',
+		fontSize: 11,
 		lineHeight: 1.2,
 		paddingBottom: '4px'
 	},
-	headerText: {
-		fontSize: '26px',
-		padding: '18px 0',
-		textAlign: 'left',
-		textTransform: 'uppercase',
-	},
+
+	// education component styles
 	eduHistory: {
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'flex-start',
 		justifyContent: 'flex-between',
-		padding: '0 0 20px  0',
+		padding: '20px 0 5px  0',
 	},
 	schoolName: {
-		fontSize: '15px',
+		fontSize: 15,
 		fontWeight: 700
 	},
 	courseName: {
-		fontSize: '14px',
+		fontSize: 14,
 		color: '#020202',
 		fontStyle: 'italic'
 	},
 	eduHistoryNames: {
-		flex: 1,
-		paddingRight: '30px'
+		flex: 3,
 	},
 	eduHistoryDates: {
-		fontSize: '12px',
+		fontSize: 12,
 		color: 'maroon',
-		flex: 1,
-	}
+		flex: 2,
+		textAlign: 'right'
+	},
+	// list component styles
+	item: {
+    flexDirection: 'row',
+    marginBottom: 5,
+  },
+  bulletPoint: {
+    width: 10,
+    fontSize: 10,
+  },
+  itemContent: {
+    flex: 1,
+    fontSize: 10,
+  },
 });
 Font.register({
 	family: 'Open Sans',

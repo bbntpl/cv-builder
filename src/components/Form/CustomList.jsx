@@ -25,10 +25,10 @@ export default function CustomList(props) {
 		} else {
 			return listItems.reduce((string, item, index, arr) => {
 				//add char '|' if the array item is not the last
-				if(arr.length - 1 === index) {
-					string += `${item}|`
+				if(arr.length - 1 !== index) {
+					return string += `${item}|`
 				} else {
-					string += item
+					return string += item
 				}
 			}, '');
 		}
