@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 //imported components
-import BasicInfo from '../components/CVFormFieldsets/BasicInfo';
-import Edu from '../components/CVFormFieldsets/Edu';
-import WorkExp from '../components/CVFormFieldsets/Work';
-import SkillCategory from '../components/CVFormFieldsets/SkillCategory';
-import FormOptionsContainer from '../components/Form/FormOptionsContainer';
+import BasicInfo from '../components/CVFieldsets/BasicInfo';
+import Edu from '../components/CVFieldsets/Edu';
+import WorkExp from '../components/CVFieldsets/Work';
+import SkillCategory from '../components/CVFieldsets/SkillCategory';
+import FormOptionsContainer from '../components/CVForm/FormOptionsContainer';
 
 import '../styles/cv-form-style.css';
 import { uniqueID } from '../util/reusable-funcs';

@@ -4,9 +4,9 @@ import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 import ReactToPrint from 'react-to-print';
 import '../styles/cv-pdf.css';
 
-import CVDesign1 from '../components/CVs/Design1';
-import CVDesign2 from '../components/CVs/Design2';
-import CVDesign3 from '../components/CVs/Design3';
+import CVDesign1 from '../components/CVDesigns/Design1';
+import CVDesign2 from '../components/CVDesigns/Design2';
+import CVDesign3 from '../components/CVDesigns/Design3';
 
 const cvDesigns = [
 	CVDesign1,
@@ -54,7 +54,6 @@ const PDFViewerContainer = (props) => {
 	const { userData, id } = props;
 	const navigate = useNavigate();
 	const PDFRef = useRef();
-	console.log(PDFRef);
 	return (
 		<div className='pdf-viewer-container'>
 			<span className='pdf-options'>
@@ -70,7 +69,7 @@ const PDFViewerContainer = (props) => {
 	)
 }
 
-export default function CVPDF(props) {
+export default function PDFView(props) {
 	const { userData } = props;
 	const { id } = useParams();
 	return <PDFViewerContainer userData={userData} id={id} />

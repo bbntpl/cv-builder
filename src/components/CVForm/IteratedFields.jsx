@@ -2,7 +2,7 @@ import React from 'react';
 import CUSTOM_FIELDS_DATA from '../../data/custom-fields';
 
 // components
-import CustomInputByType from './CustomInputByType';
+import CustomInputByType from '../CVInputs/CustomInputByType';
 import SubFieldsetCollection from './SubFieldsetCollection';
 
 // A component that iterates the custom field element

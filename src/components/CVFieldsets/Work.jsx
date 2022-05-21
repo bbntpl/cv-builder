@@ -1,49 +1,46 @@
 import React, { useState } from 'react';
-import FieldsetCollection from '../Form/FieldsetCollection';
+import FieldsetCollection from '../CVForm/FieldsetCollection';
 import PlusThickIcon from '../../assets/icons/plus-thick.svg';
 
-export default function Edu(props) {
-	const { handlerFuncs, CVInfoEdu } = props;
+export default function WorkExp(props) {
+	const { CVInfoWork, handlerFuncs } = props;
 	const { addObjHandler } = handlerFuncs;
-	const CVInfoEduLength = CVInfoEdu.length;
-	const [totalFieldset, setTotalFieldset] = useState(CVInfoEduLength);
+	const CVInfoWorkLength = CVInfoWork.length;
+	const [totalFieldset, setTotalFieldset] = useState(CVInfoWorkLength);
 
 	const incrementTotalFieldset = () => {
 		setTotalFieldset(totalFieldset + 1);
-		addObjHandler({fieldsetType: 'eduHistory'});
+		addObjHandler({ fieldsetType: 'workExperience' });
 	}
 
-	// prevent adding a new fieldset if the fields 
-	// from the previous fieldset are all empty
-	// otherwise, add a new fieldset
 	const addFieldsetIfPrevFieldsAreAllEmpty = (e) => {
 		e.preventDefault();
-		if (!CVInfoEduLength) {
+		if (!CVInfoWorkLength) {
 			incrementTotalFieldset();
 		} else {
-			const ifPrevFieldsAreEmpty =
-				Object.keys(CVInfoEdu[CVInfoEduLength - 1]).length === 1;
+			const ifPrevFieldsAreEmpty = Object.keys(CVInfoWork[CVInfoWorkLength - 1]).length === 1;
 			if (ifPrevFieldsAreEmpty) return;
 			incrementTotalFieldset();
 		}
 	}
+
 	return (
 		<fieldset>
 			<legend className='cv-form__lbl'>
-				{'Education History'}
+				{'Work History'}
 			</legend>
 			<FieldsetCollection
-				arrayOfFields={CVInfoEdu}
-				totalFieldset={totalFieldset}
-				fieldsetType={'eduHistory'}
 				handlerFuncs={handlerFuncs}
+				arrayOfFields={CVInfoWork}
+				totalFieldset={totalFieldset}
+				fieldsetType={'workExperience'}
 			/>
 			<button
 				className='cv-form__add-fieldset'
 				onClick={addFieldsetIfPrevFieldsAreAllEmpty}
 			>
 				<img src={PlusThickIcon} />
-				Add education
+				Add work
 			</button>
 		</fieldset>
 	)

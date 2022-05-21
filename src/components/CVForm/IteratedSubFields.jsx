@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomInput from './CustomInput';
+import CustomInput from '../CVInputs/CustomInput';
 import CUSTOM_FIELDS_DATA from '../../data/custom-fields';
 
 // Iteration of Custom Field element

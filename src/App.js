@@ -7,12 +7,12 @@ import {
 import './App.css';
 
 import CVForm from './modules/CVForm';
-import CVStyleSelection from './modules/CVStyleSelection';
-import CVPDF from './modules/CVPDF';
+import CVSelection from './modules/CVSelection';
+import PDFView from './modules/PDFView';
+import NotFound from './modules/NotFound';
 
-import CustomLinkContainer from './components/CustomLinkContainer';
-import CustomPrevPageLink from './components/CustomPrevPageLink';
-import NotFound from './components/NotFound';
+import CustomLinkContainer from './components/Links/CustomLinkContainer';
+import CustomPrevPageLink from './components/Links/CustomPrevPageLink';
 
 import {
 	updateLocalStorage,
@@ -53,11 +53,11 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 	},
 	{
 		path: '/styles',
-		element: <CVStyleSelection userData={userData} />,
+		element: <CVSelection userData={userData} />,
 	},
 	{
 		path: '/styles/cv/:id',
-		element: <CVPDF userData={userData} />
+		element: <PDFView userData={userData} />
 	}
 ]);
 const pathnamesThatHasNav = [

@@ -14,7 +14,6 @@ const RoundDivCollection = ({ skillLevel }) => (
 				skillLevel={modifiedSkillLvl}
 			/>
 		)
-
 	})
 )
 

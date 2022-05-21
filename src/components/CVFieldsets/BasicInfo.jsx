@@ -1,5 +1,5 @@
 import React from 'react';
-import FieldsCollectionContainer from '../Form/FieldCollection';
+import FieldsCollectionContainer from '../CVForm/FieldCollection';
 
 export default function BasicInfo(props) {
 	const { handlerFuncs, CVInfo } = props;

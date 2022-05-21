@@ -1,46 +1,49 @@
 import React, { useState } from 'react';
-import FieldsetCollection from '../Form/FieldsetCollection';
+import FieldsetCollection from '../CVForm/FieldsetCollection';
 import PlusThickIcon from '../../assets/icons/plus-thick.svg';
 
-export default function SkillCategory(props) {
-	const { CVInfoSkillCat, handlerFuncs } = props;
+export default function Edu(props) {
+	const { handlerFuncs, CVInfoEdu } = props;
 	const { addObjHandler } = handlerFuncs;
-	const CVInfoSkillCatLen = CVInfoSkillCat.length;
-	const [totalFieldset, setTotalFieldset] = useState(CVInfoSkillCatLen);
+	const CVInfoEduLength = CVInfoEdu.length;
+	const [totalFieldset, setTotalFieldset] = useState(CVInfoEduLength);
+
 	const incrementTotalFieldset = () => {
 		setTotalFieldset(totalFieldset + 1);
-		addObjHandler({ fieldsetType: 'skillCategories' });
+		addObjHandler({fieldsetType: 'eduHistory'});
 	}
 
+	// prevent adding a new fieldset if the fields 
+	// from the previous fieldset are all empty
+	// otherwise, add a new fieldset
 	const addFieldsetIfPrevFieldsAreAllEmpty = (e) => {
 		e.preventDefault();
-		if (!CVInfoSkillCatLen) {
+		if (!CVInfoEduLength) {
 			incrementTotalFieldset();
 		} else {
-			const ifPrevFieldsAreEmpty
-				= Object.keys(CVInfoSkillCat[CVInfoSkillCatLen - 1]).length === 1;
+			const ifPrevFieldsAreEmpty =
+				Object.keys(CVInfoEdu[CVInfoEduLength - 1]).length === 1;
 			if (ifPrevFieldsAreEmpty) return;
 			incrementTotalFieldset();
 		}
 	}
-
 	return (
 		<fieldset>
 			<legend className='cv-form__lbl'>
-				{'Skill Categories'}
+				{'Education History'}
 			</legend>
 			<FieldsetCollection
-				handlerFuncs={handlerFuncs}
-				arrayOfFields={CVInfoSkillCat}
+				arrayOfFields={CVInfoEdu}
 				totalFieldset={totalFieldset}
-				fieldsetType={'skillCategories'}
+				fieldsetType={'eduHistory'}
+				handlerFuncs={handlerFuncs}
 			/>
 			<button
 				className='cv-form__add-fieldset'
 				onClick={addFieldsetIfPrevFieldsAreAllEmpty}
 			>
 				<img src={PlusThickIcon} />
-				Add Skill Category
+				Add education
 			</button>
 		</fieldset>
 	)
