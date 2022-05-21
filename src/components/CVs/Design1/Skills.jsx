@@ -2,39 +2,59 @@ import React from 'react';
 import { View, Text } from '@react-pdf/renderer';
 import { styles } from './styles';
 
-const modifySkillLvlByRange = (skillLevel) => {
-	return skillLevel >= 1 && skillLevel <= 5 ? skillLevel : 1;
+const modifySkillLvlByRange = (skillLvl) => {
+	return skillLvl >= 1 && skillLvl <= 100 ? skillLvl : 20;
 }
 const RoundDivCollection = ({ skillLevel }) => (
-	Array.from({ length: 5 }, (x, i) => {
-		const modifiedSkillLvl = modifySkillLvlByRange(skillLevel);
-		if (i <= modifiedSkillLvl) {
-			x = <RoundDiv style={styles.roundDiv} />
-		}
+	Array.from({ length: 5 }, (_, i) => {
+		const modifiedSkillLvl = modifySkillLvlByRange(Number(skillLevel));
+		return (
+			<SkillLevelIndicator
+				key={i}
+				skillLevel={modifiedSkillLvl}
+			/>
+		)
+
 	})
 )
 
-const RoundDiv = (style) => (
-	<View style={style}></View>
+const SkillLevelIndicator = ({ skillLevel }) => (
+	<View style={styles.barWrapper}>
+		<View style={[styles.bar, { width: `${skillLevel}%` }]}></View>
+	</View>
 )
 
 function Skillset({ skill, skillLevel }) {
 	return (
-		<View style={styles.skill}>
-			<Text>{skill}</Text>
+		<View style={styles.skillSet}>
+			<Text style={styles.skill}>{skill}</Text>
 			<RoundDivCollection skillLevel={skillLevel} />
 		</View>
 	)
 }
 
-export default function Skills({ skillCategories }) {
-	return skillCategories.map((skillSet, i) => {
-		const { skillCategory, skills } = skillSet;
+function SkillList({ skills }) {
+	return skills.map((skillset, i) => (
+		<Skillset key={i} {...skillset} />
+	))
+}
+
+function SkillCategories({ skillCategories }) {
+	return skillCategories.map((skillCatObj, i) => {
+		const { skillsCategory, skills } = skillCatObj;
 		return (
-			<View key={i}>
-				<Text>{skillCategory}</Text>
-				<Skillset {...skills} />
-			</View>
+			<React.Fragment key={i}>
+				<Text style={styles.skillCategory}>{skillsCategory}</Text>
+				<SkillList skills={skills} />
+			</React.Fragment>
 		)
 	})
 }
+
+export default function Skills({ skillCategories }) {
+	return (
+		<View style={styles.skillCategoriesContainer}>
+			<SkillCategories skillCategories={skillCategories} />
+		</View>
+	)
+} 

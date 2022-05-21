@@ -16,8 +16,8 @@ export default (props) => {
 			subject={`The CV of ${userData.fullName}`}
 			title={'CV'}
 		>
-			<Page size="A4">
-				<view style={styles.container}>
+			<Page size="A4" >
+				<View style={styles.container}>
 					<View style={styles.leftColumn}>
 						<BasicInfo userData={userData} />
 						<Skills skillCategories={skillCategories} />
@@ -26,7 +26,7 @@ export default (props) => {
 						<Education eduHistory={eduHistory} />
 						<Experience workExperience={workExperience} />
 					</View>
-				</view>
+				</View>
 			</Page>
 		</Document>
 	)

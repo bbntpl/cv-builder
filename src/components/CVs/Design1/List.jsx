@@ -5,7 +5,7 @@ import { styles } from './styles';
 const List = ({ children }) => children;
 
 export const Item = ({ children }) => (
-  <View style={styles.item}>
+  <View style={styles.item} wrap={false}>
     <Text style={styles.bulletPoint}>•</Text>
     <Text style={styles.itemContent}>{children}</Text>
   </View>
