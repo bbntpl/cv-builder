@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cv-builder/static/css/main.2b0f32e1.css",
-    "main.js": "/cv-builder/static/js/main.c1460013.js",
+    "main.js": "/cv-builder/static/js/main.a44d58f4.js",
     "static/media/OpenSans-Italic.ttf": "/cv-builder/static/media/OpenSans-Italic.dfdc57f049b12560a7d9.ttf",
     "static/media/OpenSans-Regular.ttf": "/cv-builder/static/media/OpenSans-Regular.57cd57a648021fa1c396.ttf",
     "static/media/OpenSans-Light.ttf": "/cv-builder/static/media/OpenSans-Light.8ed223d62df9e1a6a838.ttf",
@@ -14,10 +14,10 @@
     "static/media/text-long.svg": "/cv-builder/static/media/text-long.4759d1127a47f541c79379ed37807b27.svg",
     "static/media/plus-thick.svg": "/cv-builder/static/media/plus-thick.b1d5bbe50b453753f0771ea090aa8060.svg",
     "main.2b0f32e1.css.map": "/cv-builder/static/css/main.2b0f32e1.css.map",
-    "main.c1460013.js.map": "/cv-builder/static/js/main.c1460013.js.map"
+    "main.a44d58f4.js.map": "/cv-builder/static/js/main.a44d58f4.js.map"
   },
   "entrypoints": [
     "static/css/main.2b0f32e1.css",
-    "static/js/main.c1460013.js"
+    "static/js/main.a44d58f4.js"
   ]
 }
