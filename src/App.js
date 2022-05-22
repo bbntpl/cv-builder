@@ -62,8 +62,11 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 ]);
 const pathnamesThatHasNav = [
 	'/cv-builder/form', 
+	'/cv-builder/form/',
 	'/cv-builder', 
+	'/cv-builder/',
 	'/cv-builder/styles',
+	'/cv-builder/styles/'
 ]
 const RenderNavByPathname = () => {
 	const { pathname } = useLocation();
