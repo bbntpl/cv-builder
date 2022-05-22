@@ -204,9 +204,18 @@ function CVForm(props) {
 		addObjHandler,
 		deleteObjHandler
 	};
+
 	return (
 		<div className="cv-form primary-el-with-shadow">
-			<form className="cv-form__inner" id='cv-form__inner'>
+
+			<form
+				className="cv-form__inner"
+				id='cv-form__inner'
+				onSubmit={e => handleFormSubmit(e, CVInfo)}
+			>
+				<legend className={'cv-form-reminder'}>
+					{'Remember to hit the \'Save\' button to update your information'}
+				</legend>
 				<BasicInfo
 					CVInfo={CVInfo}
 					handlerFuncs={handlerFuncs}

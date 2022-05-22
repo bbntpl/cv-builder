@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomFileInput from './CustomFileInput';
 import CustomInput from './CustomInput';
 import CustomList from './CustomList';
 
@@ -9,7 +10,7 @@ export default function CustomInputByType(params) {
 		handlerFuncs,
 		fieldsetInfo
 	} = params;
-	
+
 	const {
 		handleListChange,
 		handleChangeInArray,
@@ -21,7 +22,8 @@ export default function CustomInputByType(params) {
 		lblTxt: `${field.lblTxt}:`,
 		lblFor: field.lblFor,
 		propKey: field.propKey,
-		inputVal: CVInfo[field.propKey] || ''
+		inputVal: CVInfo[field.propKey] || '',
+		inputType: field.inputType
 	};
 	if (field.inputType === 'textarea') {
 		return (
@@ -30,6 +32,15 @@ export default function CustomInputByType(params) {
 				formAttrsData={formAttrsData}
 				handleListChange={handleListChange}
 				fieldsetInfo={fieldsetInfo}
+			/>
+		)
+	}
+	else if (field.inputType === 'file') {
+		return (
+			<CustomFileInput
+				key={field.lblFor}
+				formAttrsData={formAttrsData}
+				handleChange={handleChange}
 			/>
 		)
 	}

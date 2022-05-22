@@ -76,15 +76,19 @@ function AppWrapper() {
 		eduHistory: [],
 		workExperience: [],
 		skillCategories: [],
-		extra: [],
 	}
 	const locallySavedData = getItemFromLocal('userData');
 	const [userData, setUserData] = useState(locallySavedData || initialUserData);
-	const handleFormSubmit = (e, formData) => {
-		e.preventDefault();
+
+	const saveUserData = (formData) => {
 		setUserData({ ...formData });
 		updateLocalStorage('userData', formData)
+	}
+	const handleFormSubmit = (e, formData) => {
+		e.preventDefault();
+		saveUserData(formData);
 	};
+
 	const handleResetData = (setCVInfo) => {
 		//reset the user data to its initial state
 		setUserData({ ...initialUserData });

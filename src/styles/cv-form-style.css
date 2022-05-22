@@ -4,6 +4,11 @@
 	--filtered-color-torch-red: invert(24%) sepia(70%) saturate(3235%) hue-rotate(346deg) brightness(96%) contrast(119%);
 }
 
+.cv-form-reminder {
+	text-align: left;
+	font-style: italic;
+}
+
 .cv-form {
 	max-width: 976px;
 	width: 100%;
@@ -13,7 +18,7 @@
 }
 
 .cv-form__inner {
-	padding: 1.5rem 2rem;
+	padding: 1rem 2rem;
 	width: 100%;
 }
 

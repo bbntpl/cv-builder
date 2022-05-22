@@ -10,13 +10,11 @@ function BoneWord(props) {
 		height: `${height}px`,
 		backgroundColor: color
 	}
-	return (
-		<div style={boneWordStyle} />
-	)
+	return <div style={boneWordStyle} />
 }
 
 // This is a sub-component for the thumbnail
-// in which it supposedly represent a paragraph-esque element.
+// represented as a paragraph-esque element.
 export default function SkeletonParagraph(props) {
 	// these are the default properties if the 
 	// component did not receive a property values
