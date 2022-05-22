@@ -1,7 +1,6 @@
-import React, { forwardRef, useRef } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
-import ReactToPrint from 'react-to-print';
 import '../styles/cv-pdf.css';
 
 import CVDesign1 from '../components/CVDesigns/Design1';
@@ -27,16 +26,15 @@ const RenderCVById = ({ userData, id }) => (
 	})
 )
 
-const RenderPDFViewer = forwardRef((props, ref) => (
+const RenderPDFViewer = (props) => (
 	<PDFViewer
 		width={'595px'}
 		height={'842px'}
 		showToolbar={false}
-		ref={ref}
 	>
 		<RenderCVById {...props} />
 	</PDFViewer>
-))
+)
 
 const RenderPDFDownloadLink = ({ userData, id }) => (
 	<PDFDownloadLink
@@ -53,18 +51,13 @@ const RenderPDFDownloadLink = ({ userData, id }) => (
 const PDFViewerContainer = (props) => {
 	const { userData, id } = props;
 	const navigate = useNavigate();
-	const PDFRef = useRef();
 	return (
 		<div className='pdf-viewer-container'>
 			<span className='pdf-options'>
 				<RenderPDFDownloadLink userData={userData} id={id} />
-				<ReactToPrint
-					trigger={() => <a>Print</a>}
-					content={() => PDFRef.current}
-				/>
 				<a onClick={() => navigate('/')}>Edit CV Data</a>
 			</span>
-			<RenderPDFViewer {...props} ref={PDFRef} />
+			<RenderPDFViewer {...props} />
 		</div>
 	)
 }
