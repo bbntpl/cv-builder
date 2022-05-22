@@ -55,7 +55,7 @@ const PDFViewerContainer = (props) => {
 		<div className='pdf-viewer-container'>
 			<span className='pdf-options'>
 				<RenderPDFDownloadLink userData={userData} id={id} />
-				<a onClick={() => navigate('/')}>Edit CV Data</a>
+				<a onClick={() => navigate('/cv-builder/')}>Edit CV Data</a>
 			</span>
 			<RenderPDFViewer {...props} />
 		</div>

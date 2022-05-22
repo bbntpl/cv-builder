@@ -1,3 +1,6 @@
+// added this config to fix the error provided by the 
+// react-pdf/renderer library
+
 const webpack = require('webpack');
 module.exports = function override(config) {
 	const fallback = config.resolve.fallback || {};

@@ -6,12 +6,12 @@ export default function CustomLinkContainer() {
 	return (
 		<nav className='cv-link__container'>
 			<CustomLink
-				to={'/'}
+				to={'/cv-builder'}
 				linkText={'Your Info'}
 				isActive={false}
 			/>
 			<CustomLink
-				to={'/styles'}
+				to={'/cv-builder/styles'}
 				linkText={'Style Selection'}
 				isActive={true}
 			/>

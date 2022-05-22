@@ -13,7 +13,7 @@ import { uniqueID } from '../util/reusable-funcs';
 function CVForm(props) {
 	const { handleFormSubmit, handleResetData, userData } = props;
 	const [CVInfo, setCVInfo] = useState(userData);
-
+	
 	// handle change on inputs - base property of the CV info
 	const handleChange = (e, { propKey }) => {
 		let updatedValue = {};

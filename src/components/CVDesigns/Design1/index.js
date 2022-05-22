@@ -32,9 +32,12 @@ export default (props) => {
 				</View>
 				<View style={styles.container}>
 					<View style={styles.leftColumn}>
-						<View style={styles.photoWrapper} >
-							<Image style={styles.photo} src={yourPicture} />
-						</View>
+						{
+							yourPicture &&
+							<View style={styles.photoWrapper} >
+								<Image style={styles.photo} src={yourPicture} />
+							</View>
+						}
 						<BasicInfo userData={userData} />
 						<Skills skillCategories={skillCategories} />
 					</View>
@@ -44,6 +47,7 @@ export default (props) => {
 					</View>
 				</View>
 				<View style={styles.bottomMargin} fixed>
+					<View style={styles.leftColumn}></View>
 				</View>
 			</Page>
 		</Document>

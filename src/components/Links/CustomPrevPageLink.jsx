@@ -7,7 +7,7 @@ export default function CustomPrevPageLink() {
 	const navigate = useNavigate();
 	return (
 		<div className='return-prev-page-container'>
-			<a onClick={() => navigate('/styles')}>
+			<a onClick={() => navigate('/cv-builder/styles')}>
 				<img src={ReturnPrevPageArrowIcon} />
 				Back to the previous page
 			</a>

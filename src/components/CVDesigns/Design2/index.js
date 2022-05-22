@@ -37,9 +37,12 @@ export default (props) => {
 					<View style={styles.topMargin} fixed>
 					</View>
 					<View style={styles.upperSide}>
-					<View style={styles.photoWrapper} >
-							<Image style={styles.photo} src={yourPicture} />
-						</View>
+					{
+							yourPicture &&
+							<View style={styles.photoWrapper} >
+								<Image style={styles.photo} src={yourPicture} />
+							</View>
+						}
 						<View style={styles.basicInfoContainer}>
 							<Text style={styles.fullName}>{fullName}</Text>
 							<BasicInfo

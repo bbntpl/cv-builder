@@ -7,16 +7,14 @@ export default function FormOptionsContainer(props) {
 	const [notifyMsgHolder, setNotifyMsgHolder] = useState();
 
 	const handleFormSubmitThenNotify = (e) => {
-		if (isNotificationTriggered) return;
 		handleFormSubmit(e, CVInfo);
 		setNotifyMsgHolder('User data updated ✅');
-		toggleNotifier();
+		toggleNotifier(true);
 	}
 	const handleFormResetThenNotify = (e) => {
-		if (isNotificationTriggered) return;
 		handleFormReset(e);
 		setNotifyMsgHolder('User data deleted ✅');
-		toggleNotifier();
+		toggleNotifier(true);
 	}
 	return (
 		<div className='cv-form__options'>

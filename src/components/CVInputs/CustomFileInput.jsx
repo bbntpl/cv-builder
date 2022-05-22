@@ -16,10 +16,14 @@ export default function CustomFileInput({ formAttrsData, handleChange }) {
 		inputType
 	} = formAttrsData;
 	const [photoURL, setPhotoURL] = useState(inputVal);
+
 	//display buffered raw image data
 	function showFilePreview(e) {
 		let files = e.target.files;
-		if (!files || !files.length) return;
+		if (!files || !files.length) {
+			setPhotoURL(null);
+			return;
+		}
 		createImage(files[0]);
 	}
 
@@ -27,19 +31,26 @@ export default function CustomFileInput({ formAttrsData, handleChange }) {
 	function createImage(file) {
 		let reader = new FileReader();
 		reader.addEventListener('load', () => {
-			setPhotoURL(reader.result);
-			photoURL !== null ? setPhotoURL(reader.result) : null;
-
-			//created mock event object to pass the ideal value
-			const e = {
-				target: {
-					value: photoURL !== null ? reader.result : null
-				}
-			};
-			handleChange(e, { propKey });
+			updateUserImage(reader);
 		});
 
 		reader.readAsDataURL(file);
+	}
+
+	const updateUserImage = (reader = null) => {
+		//created mock event object to pass the ideal value
+		const e = {
+			target: {
+				value: reader !== null ? reader.result : null
+			}
+		};
+		reader !== null ? setPhotoURL(reader.result) : setPhotoURL(null);
+		handleChange(e, { propKey });
+	}
+
+	const removeFile = () => {
+		setPhotoURL(null);
+		updateUserImage();
 	}
 
 	return (
@@ -51,11 +62,21 @@ export default function CustomFileInput({ formAttrsData, handleChange }) {
 					type={inputType}
 					onChange={showFilePreview}
 				/>
+				<br></br>
+				{
+					inputVal &&
+					<button onClick={removeFile}>
+						remove file
+					</button>
+				}
 			</div>
-			<img
-				src={photoURL}
-				style={imgPreviewStyle}
-			/>
+			{
+				inputVal &&
+				<img
+					src={photoURL}
+					style={imgPreviewStyle}
+				/>
+			}
 		</div>
 	)
 }

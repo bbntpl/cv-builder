@@ -32,9 +32,12 @@ export default (props) => {
 					</View>
 					<View style={styles.upperSection}>
 						<BasicInfo userData={userData} />
-						<View style={styles.photoWrapper}>
-							<Image style={styles.photo} src={yourPicture} />
-						</View>
+						{
+							yourPicture &&
+							<View style={styles.photoWrapper} >
+								<Image style={styles.photo} src={yourPicture} />
+							</View>
+						}
 					</View>
 					<Education eduHistory={eduHistory} />
 					<Experience workExperience={workExperience} />

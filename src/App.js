@@ -36,7 +36,7 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 		element: <NotFound />
 	},
 	{
-		path: '/',
+		path: '/cv-builder',
 		element: <CVForm
 			handleResetData={handleResetData}
 			handleFormSubmit={handleFormSubmit}
@@ -44,7 +44,7 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 		/>
 	},
 	{
-		path: '/form',
+		path: '/cv-builder/form',
 		element: <CVForm
 			handleResetData={handleResetData}
 			handleFormSubmit={handleFormSubmit}
@@ -52,16 +52,18 @@ const App = ({ handleResetData, handleFormSubmit, userData }) => useRoutes([
 		/>
 	},
 	{
-		path: '/styles',
+		path: '/cv-builder/styles',
 		element: <CVSelection userData={userData} />,
 	},
 	{
-		path: '/styles/cv/:id',
+		path: '/cv-builder/styles/cv/:id',
 		element: <PDFView userData={userData} />
 	}
 ]);
 const pathnamesThatHasNav = [
-	'/form', '/', '/styles'
+	'/cv-builder/form', 
+	'/cv-builder', 
+	'/cv-builder/styles',
 ]
 const RenderNavByPathname = () => {
 	const { pathname } = useLocation();
