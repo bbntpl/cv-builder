@@ -25,9 +25,9 @@ const SkillLevelIndicator = ({ style }) => (
 
 function Skillset({ skill, skillLevel }) {
 	return (
-		<View style={styles.skillSet}>
-			<Text style={styles.skill}>{skill}</Text>
-			<View style={styles.skillOrbsContainer}>
+		<View style={styles.skillSet} >
+			<Text style={styles.skill} >{skill}</Text>
+			<View style={styles.skillOrbsContainer} >
 				<RoundDivCollection skillLevel={skillLevel} />
 			</View>
 		</View>
@@ -54,8 +54,11 @@ function SkillCategories({ skillCategories }) {
 
 export default function Skills({ skillCategories }) {
 	return (
-		<View style={styles.skillCategoriesContainer}>
-			<SkillCategories skillCategories={skillCategories} />
+		<View>
+			<Text style={styles.headerText}>Skills</Text>
+			<View style={styles.skillCategoriesContainer}>
+				<SkillCategories skillCategories={skillCategories} />
+			</View>
 		</View>
 	)
 } 

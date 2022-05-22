@@ -13,9 +13,9 @@ import { styles } from './styles';
 
 export default (props) => {
 	const { userData } = props;
-	const { 
-		eduHistory, 
-		workExperience, 
+	const {
+		eduHistory,
+		workExperience,
 		skillCategories,
 		yourPicture
 	} = userData;
@@ -27,9 +27,14 @@ export default (props) => {
 			title={'CV'}
 		>
 			<Page size="A4" >
+				<View style={styles.topMargin} fixed>
+					<View style={styles.leftColumn} ></View>
+				</View>
 				<View style={styles.container}>
 					<View style={styles.leftColumn}>
-						<Image style={styles.imgPreview} src={yourPicture}/>
+						<View style={styles.photoWrapper} >
+							<Image style={styles.photo} src={yourPicture} />
+						</View>
 						<BasicInfo userData={userData} />
 						<Skills skillCategories={skillCategories} />
 					</View>
@@ -37,6 +42,8 @@ export default (props) => {
 						<Education eduHistory={eduHistory} />
 						<Experience workExperience={workExperience} />
 					</View>
+				</View>
+				<View style={styles.bottomMargin} fixed>
 				</View>
 			</Page>
 		</Document>

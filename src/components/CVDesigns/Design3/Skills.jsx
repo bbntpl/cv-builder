@@ -12,22 +12,24 @@ const RoundDivCollection = ({ skillLevel }) => (
 			<SkillLevelIndicator
 				key={i}
 				skillLevel={modifiedSkillLvl}
+				style={modifiedSkillLvl >= (i) * 20
+					&& styles.skillOrb}
 			/>
 		)
 	})
 )
 
-const SkillLevelIndicator = ({ skillLevel }) => (
-	<View style={styles.barWrapper}>
-		<View style={[styles.bar, { width: `${skillLevel}%` }]}></View>
-	</View>
+const SkillLevelIndicator = ({ style }) => (
+	<View style={style}></View>
 )
 
 function Skillset({ skill, skillLevel }) {
 	return (
-		<View style={styles.skillSet}>
+		<View style={styles.skillSet} wrap={false}>
 			<Text style={styles.skill}>{skill}</Text>
-			<RoundDivCollection skillLevel={skillLevel} />
+			<View style={styles.skillOrbsContainer}>
+				<RoundDivCollection skillLevel={skillLevel} />
+			</View>
 		</View>
 	)
 }
@@ -52,8 +54,11 @@ function SkillCategories({ skillCategories }) {
 
 export default function Skills({ skillCategories }) {
 	return (
-		<View style={styles.skillCategoriesContainer}>
-			<SkillCategories skillCategories={skillCategories} />
+		<View>
+			<Text style={styles.headerText} wrap={false}>Skills</Text>
+			<View style={styles.skillCategoriesContainer}>
+				<SkillCategories skillCategories={skillCategories} />
+			</View>
 		</View>
 	)
 } 

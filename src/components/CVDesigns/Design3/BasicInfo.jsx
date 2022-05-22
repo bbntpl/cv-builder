@@ -1,7 +1,12 @@
 import React from 'react';
-import { View, Text } from '@react-pdf/renderer';
+import { View, Text, Image } from '@react-pdf/renderer';
 
 import { styles } from './styles';
+
+import EmailIcon from '../../../assets/icons/email.png';
+import HomeIcon from '../../../assets/icons/home.png';
+import PhonelIcon from '../../../assets/icons/phone.png';
+import WebIcon from '../../../assets/icons/web.png';
 
 export default function BasicInfo(props) {
 	const {
@@ -11,13 +16,25 @@ export default function BasicInfo(props) {
 		address,
 		website
 	} = props.userData;
+
+	function IconizedInfo({ src, txt }) {
+		return (
+			<View style={styles.iconizedBasicInfo}>
+				<Image src={src} style={styles.basicInfoIcon} />
+				<Text style={styles.basicInfoTxt}>{txt}</Text>
+			</View>
+		)
+	}
+
 	return (
-		<View >
+		<View style={styles.basicInfoContainer}>
 			<Text style={styles.fullName}>{fullName}</Text>
-			<Text style={styles.basicInfo}>{emailAddress}</Text>
-			<Text style={styles.basicInfo}>{phoneNum}</Text>
-			<Text style={styles.basicInfo}>{address}</Text>
-			<Text style={styles.basicInfo}>{website}</Text>
+			<View style={styles.personalInfoWrapper}>
+				<IconizedInfo src={EmailIcon} txt={emailAddress} />
+				<IconizedInfo src={PhonelIcon} txt={phoneNum} />
+				<IconizedInfo src={HomeIcon} txt={address} />
+				<IconizedInfo src={WebIcon} txt={website} />
+			</View>
 		</View>
 	)
 }

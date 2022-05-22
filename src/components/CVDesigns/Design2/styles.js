@@ -1,4 +1,3 @@
-
 import { Font, StyleSheet } from '@react-pdf/renderer';
 import OpenSans300 from '../../../assets/fonts/OpenSans-Light.ttf';
 import OpenSans400 from '../../../assets/fonts/OpenSans-Regular.ttf';
@@ -10,7 +9,7 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		fontFamily: 'Open Sans',
-		padding: '12px 8px'
+		padding: '8px'
 	},
 	upperSide: {
 		display: 'flex',
@@ -36,20 +35,31 @@ export const styles = StyleSheet.create({
 		flex: '2 0 45%',
 		padding: '0 8px'
 	},
-	// user avatar
-	imgPreviewWrapper: {
+	topMargin: {
+		height: '20px',
+		width: '100%'
+	},
+	bottomMargin: {
+		position: 'fixed',
+		bottom: 0,
+		left: 0,
+		right: 0,
+		width: '100%',
+		height: '20px',
+	},
+	
+// user photo
+	photoWrapper: {
 		display: 'flex',
 		justifyContent: 'center',
-		alignContent: 'center',
-		width: '130px',
-		backgroundColor: '#7190ff',
-		padding: '10px 5px',
-		margin: '-3px 0 0 -3px',
-		border: '5px solid #7190ff',
+		width: '110px',
+		backgroundColor: '#7190ff'
 	},
-	imgPreview: {
-		maxWidth: '110px',
-		maxHeight: '110px',
+	photo: {
+		width: '100%',
+		objectFit: 'cover',
+		objectPosition: 'center',
+		flex: 1,
 		backgroundColor: 'transparent'
 	},
 	// basic info component styles

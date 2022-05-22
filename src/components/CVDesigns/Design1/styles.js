@@ -14,13 +14,13 @@ export const styles = StyleSheet.create({
 	leftColumn: {
 		flexDirection: 'column',
 		width: 170,
-		padding: '30px 10px',
+		padding: '15px 10px',
 		backgroundColor: 'maroon',
 		color: 'aliceblue',
 	},
 	rightColumn: {
 		width: 425,
-		padding: '20px 30px 30px 15px',
+		padding: '0 30px 30px 15px',
 	},
 	headerText: {
 		fontSize: 26,
@@ -28,18 +28,39 @@ export const styles = StyleSheet.create({
 		textAlign: 'left',
 		textTransform: 'uppercase',
 	},
-	// user avatar
-	imgPreview: {
-		maxWidth: '150px',
-		maxHeight: '150px',
-		margin: '8px 0',
+	topMargin: {
+		height: '20px',
+		width: '100%'
+	},
+	bottomMargin: {
+		position: 'fixed',
+		bottom: 0,
+		left: 0,
+		right: 0,
+		width: '100%',
+		height: '20px',
+	},
+
+	// user photo
+	photoWrapper: {
+		display: 'flex',
+		justifyContent: 'center',
+		width: '150px',
+		height: '150px',
+		marginBottom: '6px'
+	},
+	photo: {
+		width: '100%',
+		objectFit: 'cover',
+		objectPosition: 'center',
+		flex: 1,
 		backgroundColor: 'transparent'
 	},
+
 	// basic info component styles
 	fullName: {
 		borderTop: '3px solid aliceblue',
 		fontSize: 20,
-		textTransform: 'uppercase',
 		padding: '12px 0 6px 0'
 	},
 	basicInfo: {

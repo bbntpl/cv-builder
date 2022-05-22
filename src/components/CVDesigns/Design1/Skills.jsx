@@ -18,14 +18,14 @@ const RoundDivCollection = ({ skillLevel }) => (
 )
 
 const SkillLevelIndicator = ({ skillLevel }) => (
-	<View style={styles.barWrapper}>
+	<View style={styles.barWrapper} wrap={false}>
 		<View style={[styles.bar, { width: `${skillLevel}%` }]}></View>
 	</View>
 )
 
 function Skillset({ skill, skillLevel }) {
 	return (
-		<View style={styles.skillSet}>
+		<View style={styles.skillSet} wrap={false} >
 			<Text style={styles.skill}>{skill}</Text>
 			<RoundDivCollection skillLevel={skillLevel} />
 		</View>

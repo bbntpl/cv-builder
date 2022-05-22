@@ -8,25 +8,25 @@ function IteratedWorkExp(props) {
 	return workExperience.map((exp) => {
 		return (
 			<View key={exp.id}>
-				<View style={styles.eduHistory}>
-					<View style={styles.eduHistoryNames}>
-						<Text style={styles.schoolName}>{exp.companyName}</Text>
-						<Text style={styles.courseName}>{exp.jobTitle}</Text>
+				<View style={styles.catSection}>
+					<View style={styles.datesContainer}>
+						<Text style={styles.dates}>{exp.startDate} - {exp.endDate}</Text>
 					</View>
-					<View style={styles.eduHistoryDates}>
-						<Text>{exp.startDate} - {exp.endDate}</Text>
+					<View style={styles.expContentSection}>
+						<View style={styles.expSubjectsSection}>
+							<Text style={styles.primaryTitle}>{exp.jobTitle}</Text>
+							<Text style={styles.secondaryTitle}>{exp.companyName}</Text>
+						</View>
+						<List>
+							{
+								exp.descriptions.map((desc, i) => (
+									<Item key={i}>
+										{desc}
+									</Item>
+								))
+							}
+						</List>
 					</View>
-				</View>
-				<View>
-					<List>
-						{
-							exp.descriptions.map((desc, i) => (
-								<Item key={i}>
-									{desc}
-								</Item>
-							))
-						}
-					</List>
 				</View>
 			</View>
 		)

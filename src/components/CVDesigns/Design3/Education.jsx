@@ -6,13 +6,13 @@ function IteratedEduHistory(props) {
 	const { eduHistory } = props;
 	return eduHistory.map((edu) => {
 		return (
-			<View key={edu.id} style={styles.eduHistory}>
-				<View style={styles.eduHistoryNames}>
-					<Text style={styles.schoolName}>{edu.schoolName}</Text>
-					<Text style={styles.courseName}>{edu.courseName}</Text>
+			<View key={edu.id} style={styles.catSection}>
+				<View style={styles.datesContainer}>
+					<Text style={styles.dates}>{edu.startDate} - {edu.endDate}</Text>
 				</View>
-				<View style={styles.eduHistoryDates}>
-					<Text>{edu.startDate} - {edu.endDate}</Text>
+				<View style={styles.catSubjectsSection}>
+					<Text style={styles.primaryTitle}>{edu.schoolName}</Text>
+					<Text style={styles.secondaryTitle}>{edu.courseName}</Text>
 				</View>
 			</View>
 		)

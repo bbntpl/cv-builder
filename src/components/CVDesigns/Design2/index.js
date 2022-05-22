@@ -34,9 +34,11 @@ export default (props) => {
 		>
 			<Page size="A4" >
 				<View style={styles.container}>
+					<View style={styles.topMargin} fixed>
+					</View>
 					<View style={styles.upperSide}>
-						<View style={styles.imgPreviewWrapper}>
-							<Image style={styles.imgPreview} src={yourPicture} />
+					<View style={styles.photoWrapper} >
+							<Image style={styles.photo} src={yourPicture} />
 						</View>
 						<View style={styles.basicInfoContainer}>
 							<Text style={styles.fullName}>{fullName}</Text>
@@ -56,6 +58,8 @@ export default (props) => {
 						<View style={styles.rightCol}>
 							<Skills skillCategories={skillCategories} />
 						</View>
+					</View>
+					<View style={styles.bottomMargin} fixed>
 					</View>
 				</View>
 			</Page>

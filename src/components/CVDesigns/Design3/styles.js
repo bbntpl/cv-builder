@@ -1,78 +1,140 @@
-
 import { Font, StyleSheet } from '@react-pdf/renderer';
 import OpenSans300 from '../../../assets/fonts/OpenSans-Light.ttf';
 import OpenSans400 from '../../../assets/fonts/OpenSans-Regular.ttf';
 import OpenSans400i from '../../../assets/fonts/OpenSans-Italic.ttf';
 import OpenSans600 from '../../../assets/fonts/OpenSans-SemiBold.ttf';
 
+const primaryFontColor = '#142f46';
+const secondaryFontColor = '#29567c';
+// const tertiaryFontColor = '#808288';
+
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'row',
-		fontFamily: 'Open Sans',
-	},
-	leftColumn: {
 		flexDirection: 'column',
-		width: 170,
-		padding: '30px 10px',
-		backgroundColor: 'maroon',
-		color: 'aliceblue',
+		fontFamily: 'Open Sans',
+		padding: ' 0 16px 0 16px'
 	},
-	rightColumn: {
-		width: 425,
-		padding: '20px 30px 30px 15px',
-	},
-	headerText: {
-		fontSize: 26,
-		padding: '18px 0 0 0',
-		textAlign: 'left',
-		textTransform: 'uppercase',
-	},
-	// user avatar
-	imgPreview: {
-		maxWidth: '150px',
-		maxHeight: '150px',
-		margin: '8px 0',
-		backgroundColor: 'transparent'
-	},
-	// basic info component styles
-	fullName: {
-		borderTop: '3px solid aliceblue',
-		fontSize: 20,
-		textTransform: 'uppercase',
-		padding: '12px 0 6px 0'
-	},
-	basicInfo: {
-		fontSize: 12,
-		lineHeight: 1.2,
-		paddingBottom: '4px'
-	},
-
-	// education component styles
-	eduHistory: {
+	upperSection: {
 		display: 'flex',
 		flexDirection: 'row',
-		alignItems: 'flex-start',
-		justifyContent: 'flex-between',
-		padding: '14px 0 5px  0',
+		minHeight: '130px'
 	},
-	schoolName: {
-		fontSize: 16,
+	headerText: {
+		fontSize: 20,
+		padding: '12px 0 2px 0',
+		textAlign: 'left',
+		fontWeight: 600,
+		color: primaryFontColor,
+		borderBottom: `1px solid ${secondaryFontColor}`
 	},
-	courseName: {
-		fontSize: 14,
-		color: '#020202',
-		fontStyle: 'italic',
+	topMargin: {
+		height: '20px',
+		width: '100%'
 	},
-	eduHistoryNames: {
+	bottomMargin: {
+		position: 'fixed',
+		bottom: 0,
+		left: 0,
+		right: 0,
+		width: '100%',
+		height: '20px',
+	},
+
+	// user photo
+	// user photo
+	photoWrapper: {
+		display: 'flex',
+		justifyContent: 'center',
+		width: '130px',
+		height: '130px',
+	},
+	photo: {
+		width: '100%',
+		objectFit: 'cover',
+		objectPosition: 'center',
+		flex: 1,
+		backgroundColor: 'transparent'
+	},
+
+	// basic info component styles
+	basicInfoContainer: {
 		flex: 3,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		width: '465',
 	},
-	eduHistoryDates: {
+	fullName: {
+		fontSize: 24,
+		color: primaryFontColor,
+		fontWeight: 600
+	},
+	personalInfoWrapper: {
+		display: 'flex',
+		flexDirection: 'row',
+		flexWrap: 'wrap',
 		fontSize: 12,
-		color: 'maroon',
-		flex: 2,
-		textAlign: 'right'
+		height: 'auto',
 	},
+	iconizedBasicInfo: {
+		flex: '1 0 40%',
+		display: 'inline-flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+		padding: '5px 5px 5px 0'
+	},
+	basicInfoIcon: {
+		width: 18,
+		height: 18,
+		marginRight: '3px',
+	},
+	basicInfoTxt: {
+		fontSize: 12,
+		marginRight: '8px',
+		color: primaryFontColor,
+	},
+
+
+	// education/experience component styles
+	catSection: {
+		display: 'flex',
+		flexDirection: 'row',
+		padding: '8px 0 5px 0',
+		justifyContent: 'space-between'
+	},
+	datesContainer: {
+		flex: '1 0',
+	},
+	dates: {
+		fontSize: 12,
+		color: primaryFontColor,
+		fontWeight: 600,
+	},
+	catSubjectsSection: {
+		flex: '3 0',
+		margin: '0 10px',
+	},
+	primaryTitle: {
+		fontSize: 15,
+		fontWeight: 600,
+		color: primaryFontColor
+	},
+	secondaryTitle: {
+		fontSize: 12,
+		fontWeight: 400,
+		fontStyle: 'italic',
+		color: secondaryFontColor
+	},
+	expContentSection: {
+		display: 'flex',
+		flex: '3 0',
+		margin: '0 10px',
+	},
+	expSubjectsSection: {
+		marginBottom: '6px'
+	},
+
 	// list component styles
 	item: {
 		flexDirection: 'row',
@@ -85,35 +147,45 @@ export const styles = StyleSheet.create({
 	itemContent: {
 		flex: 1,
 		fontSize: 10,
+		color: secondaryFontColor
 	},
+
 	//skills
 	skillCategoriesContainer: {
 		display: 'flex',
 		flexDirection: 'column',
 	},
 	skillCategory: {
-		fontSize: 22,
-		margin: '20px 0 5px 0'
+		fontSize: 17,
+		margin: '20px 0 5px 0',
+		color: primaryFontColor
 	},
 	skillSet: {
 		display: 'flex',
-		flexDirection: 'column',
+		flexDirection: 'row',
 		justifyContent: 'space-between',
+		alignItems: 'flex-start',
 		margin: '4px 0'
 	},
 	skill: {
-		fontSize: 15,
+		fontSize: 13,
 		fontWeight: 'light',
-		textTransform: 'uppercase',
+		color: secondaryFontColor,
+		marginLeft: '30px'
 	},
-	barWrapper: {
-		width: '100%',
-		height: '2px'
+	skillOrbsContainer: {
+		display: 'flex',
+		width: '130px',
+		flexDirection: 'row',
+		flexWrap: 'wrap'
 	},
-	bar: {
-		position: 'absolute',
-		height: '100%',
-		backgroundColor: 'aliceblue'
+	skillOrb: {
+		width: '15px',
+		backgroundColor: primaryFontColor,
+		height: '15px',
+		margin: '5px',
+		borderRadius: '2px',
+		padding: '0 5px 5px 0',
 	}
 });
 Font.register({
