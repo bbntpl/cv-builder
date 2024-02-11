@@ -23,7 +23,7 @@ import {
 function Footer() {
 	return (
 		<footer className="footer">
-			<a href="https://github.com/bvrbryn445/cv-builder">
+			<a href="https://github.com/bbntpl/cv-builder">
 				{`B.B. Antipolo ${new Date().getFullYear()}`}
 			</a>
 		</footer>

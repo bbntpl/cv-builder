@@ -1,5 +1,5 @@
 # CV Builder React App
-Click [here](http://bvrbryn445.github.io/cv-builder/) to access live demo.
+Click [here](http://bbntpl.github.io/cv-builder/) to access live demo.
 
 ## Features
  - Creates a PDF file after submitting a form.
